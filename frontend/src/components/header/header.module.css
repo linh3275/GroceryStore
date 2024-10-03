@@ -1,0 +1,89 @@
+@import '../../index.css';
+
+.header {
+    padding: 0;
+    background: #005f73;
+    border-bottom: 1px solid #013A63;
+}
+
+.header a {
+  color: rgb(222, 222, 222);
+}
+
+.header a:hover {
+    cursor: pointer;
+    color: #f0f3bd;
+}
+
+.container {
+    margin: 0 20px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: "Sevillana", system-ui;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.search input {
+    width: 20rem;
+    height: 1.4rem;
+}
+
+.header ul {
+    display: flex;
+    align-items: flex-end;
+    margin: 0 40px;
+}
+
+.header ul a {
+    min-width: 5rem;
+    max-width: 7rem;
+    display: inline-block;
+    padding: 0.5rem;
+}
+
+.menu_container {
+    position: relative;
+}
+
+.menu {
+    position: absolute;
+    z-index: 1;
+    display: none;
+    background-color: #005f73;
+}
+
+.menu a {
+    max-width: 7rem;
+    min-width: 5rem;
+}
+
+.menu_container:hover .menu {
+    display: block;
+}
+
+.cart {
+    position: relative;
+    top: 5px;
+    padding-bottom: 0 !important;
+    overflow: hidden;
+}
+
+.cart_count {
+    background-color: #013A63;
+    padding: 0.14rem 0.2rem;
+    position: absolute;
+    bottom: 1.2rem;
+    left: 1.5rem;
+    border-radius: 50%;
+    font-size: 0.4rem;
+}

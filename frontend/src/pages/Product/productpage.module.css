@@ -1,0 +1,108 @@
+/* cần chỉnh lại cho đẹp mắt */
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 3rem;
+}
+
+.container > * {
+    min-width: 25rem;
+    max-width: 40rem;
+}
+
+.image {
+    border-radius: 3rem;
+    flex: 1 0;
+    object-fit: cover;
+    height: 35rem;
+    margin: 1rem;
+}
+
+.details {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1 0;
+    border-radius: 3rem;
+    padding: 2rem;
+    color: black;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.name {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.origins {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1rem 0;
+}
+
+.origins > span {
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    margin: 0.5rem;
+    margin-left: 0;
+    border-radius: 2rem;
+    background-color: aliceblue;
+}
+
+.price {
+    font-size: 1.8rem;
+    margin: 2rem;
+    margin-left: 0;
+    color: green;
+}
+
+.price::before {
+    content: 'Price: ';
+    color: darkgrey;
+}
+
+.container button {
+    color: white;
+    background-color: red;
+    border: none;
+    font-size: 1.2rem;
+    padding: 1rem;
+    border-radius: 10rem;
+    outline: none;
+}
+
+.container button:hover {
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+.notification {
+    background-color: #4CAF50; /* Màu xanh lá khi thành công */
+    color: white;
+    padding: 10px;
+    margin-top: 15px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 16px;
+    animation: fadeOut 3s forwards; /* Animation để ẩn sau 3 giây */
+}
+
+/* Tạo hiệu ứng biến mất từ từ */
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
