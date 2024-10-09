@@ -1,18 +1,18 @@
 import { Router } from "express";
 
-import { productModel } from "../models/products.model.js";
+import { ProductModel } from "../models/products.model.js";
 import handler from 'express-async-handler';
 
 const router = Router();
 
 router.get('/', handler( async (req, res) => {
-        const products = await productModel.find({});
+        const products = await ProductModel.find({});
         res.send(products);
     })
 );
 
 router.get('/tags', handler( async (req, res) => {
-    const tags = await productModel.aggregate([
+    const tags = await ProductModel.aggregate([
             {
                 $unwind: '$tags',
             },
@@ -33,7 +33,7 @@ router.get('/tags', handler( async (req, res) => {
         
         const all = {
             name: 'ALL',
-            count: await productModel.countDocuments(),
+            count: await ProductModel.countDocuments(),
         };
 
         tags.unshift(all);
@@ -46,7 +46,7 @@ router.get('/search/:searchStore', handler( async (req, res) => {
         const {searchStore} = req.params;
         const searchRegex = new RegExp(searchStore, 'i');
 
-        const products = await productModel.find({ name: { $regex: searchRegex }});
+        const products = await ProductModel.find({ name: { $regex: searchRegex }});
 
         res.send(products);
     })
@@ -54,14 +54,14 @@ router.get('/search/:searchStore', handler( async (req, res) => {
 
 router.get('/tag/:tag', handler( async (req, res) => {
         const {tag} = req.params;
-        const products = await productModel.find({ tags: tag });
+        const products = await ProductModel.find({ tags: tag });
         res.send(products);
     })
 );
 
 router.get('/:productId', handler( async (req, res) => {
         const {productId} = req.params;
-        const product = await productModel.findById(productId);
+        const product = await ProductModel.findById(productId);
         res.send(product);
     })
 );

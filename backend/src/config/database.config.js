@@ -1,7 +1,7 @@
 
 import { connect, set } from "mongoose";
 import { UserModel } from "../models/user.model.js";
-import { productModel, ProductSchema } from "../models/products.model.js";
+import { ProductModel, ProductSchema } from "../models/products.model.js";
 import { sample_products, sample_users } from "../data.js";
 import bcryptjs from 'bcryptjs';
 
@@ -36,15 +36,16 @@ async function seedUsers() {
 }
 
 async function seedProducts() {
-    const products = await productModel.countDocuments();
+    const products = await ProductModel.countDocuments();
     if (products > 0) {
         console.log('Product seed is already done');
         return;
     }
 
     for (const product of sample_products) {
-        product.imageUrl = `/products/${product.imageUrl}`;
-        await productModel.create(product);
+        // product.imageUrl = `/products/${product.imageUrl}`;
+        product.imageUrl = `${product.imageUrl}`;
+        await ProductModel.create(product);
     }
 
     console.log('Products seed is done !');
