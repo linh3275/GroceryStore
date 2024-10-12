@@ -56,7 +56,15 @@ export default function CartProvider({children}) {
       } else {
         setCartItems([...cartItems, { product, quantity: 1, price: product.price }]);
       }
-    };    
+    };
+
+    const clearCart = () => {
+      localStorage.removeItem(cart_key);
+      const {items, totalCount, totalPrice} = empty_cart;
+      setCartItems(items);
+      setTotalCount(totalCount);
+      setTotalPrice(totalPrice);
+    }
 
 
   return (
@@ -65,6 +73,7 @@ export default function CartProvider({children}) {
       removeFromCart,
       changeQuantity,
       addToCart,
+      clearCart,
     }}>
       {children}
     </CartContext.Provider>

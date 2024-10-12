@@ -7,20 +7,22 @@ const router = Router();
 import handler from 'express-async-handler';
 import { UserModel } from '../models/user.model.js';
 import bcrypt from 'bcryptjs';
+import auth from '../middleware/auth.mid.js';
 
 const PASSWORD_HASH_SALT_ROUNDS = 10;
 
 router.post('/login', handler(async (req, res) => {
-    const {email, password} = req.body;
-    const user = await UserModel.findOne({ email });
+        const {email, password} = req.body;
+        const user = await UserModel.findOne({ email });
 
-    if (user && (await bcrypt.compare(password, user.password))) {
-        res.send(genTokenRes(user));
-        return;
-    }
+        if (user && (await bcrypt.compare(password, user.password))) {
+            res.send(genTokenRes(user));
+            return;
+        }
 
-    res.status(bad_request).send('Username or password is invalid !');
-}));
+        res.status(bad_request).send('Username or password is invalid !');
+    })
+);
 
 router.post('/register', handler( async (req, res) => {
         const { name, email, password, address } = req.body;
@@ -46,6 +48,41 @@ router.post('/register', handler( async (req, res) => {
 
         const result = await UserModel.create(newUser);
         res.send(genTokenRes(result));
+    })
+);
+
+router.put('/updateProfile', auth, handler( async (req, res) => {
+        const {name, address} = req.body;
+        const user = await UserModel.findByIdAndUpdate(
+            req.user.id,
+            { name, address },
+            { new: true },
+        );
+
+        res.send(genTokenRes(user));
+    })
+);
+
+router.put('/changePassword', auth, handler(async (req, res) => {
+        const {currentPassword, newPassword} = req.body;
+        const user = await UserModel.findById(req.user.id);
+
+        if (!user) {
+            res.status(bad_request).send('Change Password failed');
+            return;
+        }
+
+        const equal = await bcrypt.compare(currentPassword, user.password);
+
+        if (!equal) {
+            res.status(bad_request).send('Current Password is not correct');
+            return;
+        }
+
+        user.password = await bcrypt.hash(newPassword, PASSWORD_HASH_SALT_ROUNDS);
+        await user.save();
+
+        res.send();
     })
 );
 
