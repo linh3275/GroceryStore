@@ -10,15 +10,13 @@ export const search = async searchFunction => {
     return data;
 };
 
-/* bị lỗi url. không hoạt động chính xác */ 
 export const getAllTags = async () => {
     const {data} = await axios.get('/api/products/tags');
     return data;
 };
-/*  */
 
 export const getAllByTag = async tag => {
-    if (tag === 'All') return getAll();
+    if (tag === 'Loại mặt hàng') return getAll();
     const {data} = await axios.get('/api/products/tag/' + tag);
     return data;
 };

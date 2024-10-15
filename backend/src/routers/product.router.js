@@ -32,7 +32,7 @@ router.get('/tags', handler( async (req, res) => {
         ]).sort({ count: -1 });
         
         const all = {
-            name: 'ALL',
+            name: 'Loại mặt hàng',
             count: await ProductModel.countDocuments(),
         };
 

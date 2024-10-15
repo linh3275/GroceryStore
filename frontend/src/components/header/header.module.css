@@ -2,22 +2,24 @@
 
 .header {
     padding: 0;
-    background: #005f73;
-    border-bottom: 1px solid #013A63;
+    background: var(--dark-green);
+    border-bottom: 1px solid var(--pale-green);
 }
 
 .header a {
-  color: rgb(222, 222, 222);
+    color: var(--dark-green);
+    background-color: var(--pale-green);
 }
 
 .header a:hover {
     cursor: pointer;
-    color: #f0f3bd;
+    color: var(--dark-green);
+    background-color: var(--old-lace);
 }
 
 .container {
-    margin: 0 20px;
-    padding: 0 20px;
+    margin: 0 2rem;
+    padding: 0 0.32rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -25,65 +27,84 @@
 
 .logo {
     font-family: "Sevillana", system-ui;
+    height: 2.2rem;
+    padding: 0 0.2rem;
+    align-content: center;
+    border-radius: 10px;
 }
 
 .search {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    padding-left: 5rem;
 }
 
 .search input {
-    width: 20rem;
-    height: 1.4rem;
+    width: 28rem;
 }
 
 .header ul {
     display: flex;
-    align-items: flex-end;
-    margin: 0 40px;
+    align-items: center;
+    gap: 2.2rem;
+    margin: 0 2rem;
+    height: 2.4rem;
 }
 
 .header ul a {
-    min-width: 5rem;
-    max-width: 7rem;
     display: inline-block;
     padding: 0.5rem;
+    border-radius: 0.2rem
 }
 
 .menu_container {
     position: relative;
 }
 
-.menu {
-    position: absolute;
-    z-index: 1;
-    display: none;
-    background-color: #005f73;
-}
-
-.menu a {
-    max-width: 7rem;
-    min-width: 5rem;
+.menu_container a {
+    width: 5rem;
+    border-radius: 0.5rem;
+    text-align: center;
 }
 
 .menu_container:hover .menu {
     display: block;
 }
 
+.menu {
+    position: absolute;
+    z-index: 1;
+    display: none;
+}
+
+.menu a {
+    max-width: 7rem;
+    min-width: 5rem;
+    margin-top: 0.2rem;
+}
+
+.menu a:hover {
+    color: var(--pale-green);
+    background-color: var(--dark-green);
+}
+
 .cart {
     position: relative;
-    top: 5px;
     padding-bottom: 0 !important;
-    overflow: hidden;
+    border-radius: 10%;
 }
 
 .cart_count {
-    background-color: #013A63;
-    padding: 0.14rem 0.2rem;
+    background-color: var(--old-lace);
+    color: var(--dark-green);
+    padding: 0.1rem 0.22rem;
     position: absolute;
     bottom: 1.2rem;
     left: 1.5rem;
     border-radius: 50%;
     font-size: 0.4rem;
+}
+
+.cart:hover .cart_count {
+    background-color: var(--pale-green);
 }

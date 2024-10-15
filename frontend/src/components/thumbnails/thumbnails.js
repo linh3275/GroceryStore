@@ -6,8 +6,9 @@ import Price from '../price/price';
 import { FavoriteIcon, NotFavoriteIcon, ShoppingIcon } from '../icon';
 import useFavorite from '../hooks/favorite';
 import { useCart } from '../hooks/cart';
+import Tags from '../tags/tags';
 
-export default function ThumbNails({ products }) {
+export default function ThumbNails({ products, tags }) {
   const { searchTerm } = useParams();  
   const { favItems, toggleFav } = useFavorite();
   const { addToCart } = useCart();
@@ -82,20 +83,7 @@ export default function ThumbNails({ products }) {
     <div className={classes.container}>
       <div className={classes.bubble}></div>
 
-      <aside className={classes.sidebar}>
-        <h3>Loại mặt hàng</h3>
-        <ul>
-          {uniqueTags.map((category) => (
-            <li
-              key={category}
-              className={selectedCategory === category ? classes.activeCategory : ''}
-              onClick={() => handleCategoryChange(category)} 
-            >
-              {category}
-            </li>
-          ))}
-        </ul>
-      </aside>
+      <Tags tags={tags} />
 
       <div className={classes.mainContent}>
         <div className={classes.navbar}>
@@ -125,7 +113,7 @@ export default function ThumbNails({ products }) {
           </span>
         </div>
 
-        <ul className={classes.grid}>
+        <ul className={classes.product_container}>
           {filteredProducts.map((product) => (
             <li key={product.id} className={classes.product}>
               <Link to={`/product/${product.id}`} className={classes.link}>
@@ -134,15 +122,13 @@ export default function ThumbNails({ products }) {
                   src={product.imageUrl}
                   alt={product.name}
                 />
-                <div className={classes.content}>
-                  <div className={classes.name}>{product.name}</div>
-                </div>
+                <div className={classes.name}>{product.name}</div>
               </Link>
-              <div className={classes.stars}>
-                <StarRating stars={product.stars} />
-              </div>
               <div className={classes.price}>
                 <Price price={product.price} />
+              </div>
+              <div className={classes.stars}>
+                <StarRating stars={product.stars} />
               </div>
               <div className={classes.actions}>
                 <span
@@ -161,7 +147,7 @@ export default function ThumbNails({ products }) {
                   </div>
                 </button>
               </div>
-              <div className={classes.stock}>Còn lại: {product.storageQuantity} sản phẩm</div>
+              {/* <div className={classes.stock}>Còn lại: {product.storageQuantity} sản phẩm</div> */}
             </li>
           ))}
         </ul>

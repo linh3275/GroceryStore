@@ -53,13 +53,6 @@ export const sample_products = [
     },
 ];
 
-export const sample_tags = [
-    {name: 'All', count: 4},
-    {name: 'đồ gia dụng', count: 4},
-    {name: 'đồ điện', count: 1},
-    {name: 'đồ gốm', count: 1},
-];
-
 export const sample_users = [
     {
         id: 1,

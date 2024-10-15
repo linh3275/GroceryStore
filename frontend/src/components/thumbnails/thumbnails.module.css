@@ -1,16 +1,10 @@
-.content {
-    color: #028090;
-}
-
-/* thumbnails.module.css */
-
-/* cần chỉnh lại tất cả css cho đẹp mắt */
+@import '../../index.css';
 
 .container {
-    display: flex;
-    width: 100%;
-    padding: 20px;
-    background: #0c192c;
+  display: flex;
+  width: 100%;
+  padding: 2rem 1rem;
+  background: var(--old-lace);
 }
 
 .bubble {
@@ -41,123 +35,64 @@
   }
 }
   
-  .sidebar {
-    width: 20%;
-    background: #f5f5f5;
-    padding: 20px;
-    border-right: 1px solid #ddd;
-  }
-  
-  .sidebar h3 {
-    font-size: 1.2rem;
-    margin-bottom: 15px;
-  }
-  
-  .sidebar ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .sidebar li {
-    padding: 10px;
-    cursor: pointer;
-    transition: 0.2s;
-  }
-  
-  .sidebar li:hover,
-  .sidebar .activeCategory {
-    background: #ff4500;
-    color: white;
-  }
-  
-  .mainContent {
-    width: 80%;
-    padding-left: 20px;
-  }
+.mainContent {
+  width: 85%;
+}
   
 .navbar {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 20px;
+  display: block;
+  margin: 0 0 1rem 2rem;
 }
   
 .navbar span {
-  border-radius: 3px;
-  background: #005f73;
-  color: rgb(222, 222, 222);
+  border-radius: 2rem;
+  color: var(--dark-green);
+  background: var(--pale-green);
   cursor: pointer;
-  padding: 10px 20px;
+  padding: 0.5rem 0.6rem;
+  margin: 0 1rem 0 0;
 }
 
 .navbar span:hover,
 .navbar .activeView {
-  background: #064c7a;
+  color: var(--pale-green);
+  background: var(--dark-green);
 }
   
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .product {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  
-  .link {
-    text-decoration: none;
-    color: inherit;
-  }
-  
-  .image {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 10px;
-  }
-  
-  .name {
-    font-size: 1.1rem;
-    font-weight: bold;
-    margin-bottom: 5px;
-    text-align: center;
-  }
-  
-  .stars {
-    text-align: center;
-    margin-bottom: 10px;
-  }
-  
-  .price {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #e60023;
-    margin-bottom: 10px;
-    text-align: center;
-  }
-  
-  .actions {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 10px;
-  }
-  
-  .favorite {
-    color: red;
-  }
-  
-  .not {
-    color: grey;
-  }
+.product_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 0.2fr));
+  gap: 0.8rem;
+  margin: 0.2rem 0;
+}
+
+.product {
+  border-radius: 0.2rem;
+  background-color: white;
+}
+
+.product:hover {
+  border: 0.1rem solid var(--pale-green);
+  box-shadow: 0 0.05rem 0.1rem var(--dark-green, 0.8);
+}
+
+.image {
+  width: 10rem;
+  margin: 0.2rem 0 0.15rem 0.21rem;
+  border-radius: 0.2rem;
+}
+
+.product:hover .image {
+  margin: 0.15rem;
+}
+
+.name {}
+
+.stars {}
+
+.price {}
+
+.actions {}
 
 .addToCart {
   background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);

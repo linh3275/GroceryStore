@@ -1,27 +1,40 @@
+@import '../../index.css';
+
 .searchBox {
   display: flex;
   align-items: center;
-  border: 1px solid #ccc;
+  border: 1px solid var(--pale-green);
   border-radius: 5px;
-  background-color: #f1f1f1;
+  background-color: var(--old-lace);
 }
 
 .searchInput {
   border: none;
   outline: none;
   padding: 8px;
-  flex: 1;
   border-radius: 5px;
+  color: var(--dark-green);
   background-color: transparent;
+}
+
+.searchInput::placeholder {
+  color: var(--dark-green);
+  opacity: 0.5;
 }
 
 .searchIcon {
   cursor: pointer;
-  margin-right: 2px;
-  color: #5b42f3;
-  transition: color 0.3s ease;
+  position: relative;
+  top: 0.15rem;
+  right: 0.2rem;
+  border-radius: 50%;
+  color: var(--dark-green);
+  background-color: var(--pale-green);
+  border: 1px solid var(--dark-green);
 }
 
 .searchIcon:hover {
-  color: #af40ff;
+  color: var(--pale-green);
+  background-color: var(--dark-green);
+  border: 1px solid var(--pale-green);
 }

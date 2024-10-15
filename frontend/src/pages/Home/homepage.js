@@ -34,9 +34,8 @@ export default function HomePage() {
 
   return (
     <>
-      <Tags tags={tags}/>
       {products.length === 0 && <NotFound />}
-      <ThumbNails products = {products} />
+      <ThumbNails products={products} tags={tags} />
     </>
   )
 }

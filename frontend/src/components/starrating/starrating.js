@@ -8,9 +8,9 @@ export default function StarRating({stars}) {
   function Star({number}) {
     const halfNumber = number -0.5;
 
-    return stars >= number? <StarIcon sx={{color: yellow[700], fontSize: 18, cursor: 'pointer'}} className={classes.star} />
-    : stars >= halfNumber? <StarHalfIcon sx={{color: yellow[700], fontSize: 18, cursor: 'pointer'}} className={classes.star} />
-    : <StarBorderIcon sx={{color: yellow[700], fontSize: 18, cursor: 'pointer'}} className={classes.star} />
+    return stars >= number? <StarIcon sx={{color: yellow[700], fontSize: 18}} className={classes.star} />
+    : stars >= halfNumber? <StarHalfIcon sx={{color: yellow[700], fontSize: 18}} className={classes.star} />
+    : <StarBorderIcon sx={{color: yellow[700], fontSize: 18}} className={classes.star} />
   }
 
   return (
