@@ -46,8 +46,9 @@
   
 .navbar span {
   border-radius: 2rem;
-  color: var(--dark-green);
-  background: var(--pale-green);
+  border: 1px solid var(--forest-green);
+  color: var(--forest-green);
+  background: var(--lime-green);
   cursor: pointer;
   padding: 0.5rem 0.6rem;
   margin: 0 1rem 0 0;
@@ -55,8 +56,9 @@
 
 .navbar span:hover,
 .navbar .activeView {
-  color: var(--pale-green);
-  background: var(--dark-green);
+  color: var(--lime-green);
+  background: var(--forest-green);
+  border: 2px solid var(--lime-green);
 }
   
 .product_container {
@@ -72,8 +74,9 @@
 }
 
 .product:hover {
-  border: 0.1rem solid var(--pale-green);
-  box-shadow: 0 0.05rem 0.1rem var(--dark-green, 0.8);
+  border: 0.1rem solid var(--lime-green);
+  box-shadow: 0.025rem 0.025rem 0.1rem var(--forest-green, 0.8),
+             -0.025rem -0.025rem 0.1rem var(--forest-green, 0.8);
 }
 
 .image {
@@ -86,36 +89,62 @@
   margin: 0.15rem;
 }
 
-.name {}
+.name {
+  margin: 0 0.4rem;
+  text-transform: capitalize;
+  color: var(--forest-green);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 1.2rem;
+}
 
-.stars {}
+.price {
+  margin: 0 0.4rem;
+  color: var(--forest-green);
+  border-radius: 2rem;
+}
 
-.price {}
+.evaluation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0.4rem;
+}
+
+.favIcon {
+  color: var(--forest-green);
+  cursor: pointer;
+}
+
+.fav {
+  color: var(--pale-green);
+}
 
 .actions {}
 
 .addToCart {
-  background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
-  /* box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px; */
-  color: rgb(222, 222, 222);
-  border-radius: 4px;
-  padding: 3px;
-  border: 0;
-  font-size: 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.15rem;
+  margin: 0 0 0.3rem 0.3rem;
+  color: var(--forest-green);
+  background-color: var(--forest-green);
 }
 
 .neonbbtn {
   display: flex;
   align-items: center;
   cursor: pointer;
-  background-color: #05062d;
+  background-color: var(--pale-green);
   padding: 4px;
+  border: none;
   border-radius: 2px;
   transition: 300ms;
 }
 
 .neonbbtn:hover {
   background: none;
+  color: var(--pale-green);
 }
   
   .stock {

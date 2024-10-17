@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom'; 
+import { Link, useParams } from 'react-router-dom'; 
 import classes from './thumbnails.module.css';
 import StarRating from '../starrating/starrating';
 import Price from '../price/price';
@@ -12,9 +12,7 @@ export default function ThumbNails({ products, tags }) {
   const { searchTerm } = useParams();  
   const { favItems, toggleFav } = useFavorite();
   const { addToCart } = useCart();
-  const navigate = useNavigate(); 
   
-  const uniqueTags = ['Tất cả', ...new Set(products.flatMap((product) => product.tags))];
   const [selectedCategory, setSelectedCategory] = useState('Tất cả');
   const [filteredProducts, setFilteredProducts] = useState(products);
   const [viewMode, setViewMode] = useState('all');
@@ -54,14 +52,6 @@ export default function ThumbNails({ products, tags }) {
 
     setFilteredProducts(applyViewMode(filteredByCategory));
   }, [searchResults, viewMode, favItems, selectedCategory]);
-
-  // Xử lý thay đổi phân loại
-  const handleCategoryChange = (category) => {
-    setSelectedCategory(category);
-    if (category === 'Tất cả') {
-      navigate('/');
-    }
-  };
 
   // Xử lý thay đổi chế độ xem
   const handleViewModeChange = (mode) => {
@@ -123,27 +113,32 @@ export default function ThumbNails({ products, tags }) {
                   alt={product.name}
                 />
                 <div className={classes.name}>{product.name}</div>
+                <div className={classes.price}>
+                  <Price price={product.price} />
+                </div>
               </Link>
-              <div className={classes.price}>
-                <Price price={product.price} />
-              </div>
-              <div className={classes.stars}>
-                <StarRating stars={product.stars} />
-              </div>
               <div className={classes.actions}>
-                <span
-                  onClick={() => toggleFav(product.id)}
-                  style={{ cursor: 'pointer' }}
-                >
-                  {favItems[product.id] ? <FavoriteIcon /> : <NotFavoriteIcon />}
-                </span>
+                <div className={classes.evaluation}>
+                  <div className={classes.stars}>
+                    <StarRating stars={product.stars} />
+                  </div>
+                  <span
+                    onClick={() => toggleFav(product.id)}
+                    className={classes.favIcon}
+                  >
+                    {favItems[product.id] ? 
+                      <div className={classes.fav}>
+                        <FavoriteIcon /> 
+                      </div> : <NotFavoriteIcon />
+                    }
+                  </span>
+                </div>
                 <button 
                   className={classes.addToCart} 
                   onClick={() => handleAddToCart(product)} 
                 >
                   <div className={classes.neonbbtn}>
-                    <ShoppingIcon fontSize='small' sx={{marginRight: '4px'}} />
-                    Thêm vào giỏ hàng
+                    <ShoppingIcon fontSize='small' />
                   </div>
                 </button>
               </div>

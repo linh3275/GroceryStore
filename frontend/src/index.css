@@ -1,8 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Sevillana&display=swap');
 
 :root {
-    --dark-green: #004b1a;
-    --pale-green: #c4ff88;
+    --forest-green: #004b1a;
+    --lime-green: #c4ff88;
+    --mint-green: #c8e6c9;
+    --pale-green: #98FB98;
+    --patone-green: #1b5e20;
+    
     --old-lace: #f9f2e6;
 }
 

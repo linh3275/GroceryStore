@@ -3,7 +3,7 @@
 .searchBox {
   display: flex;
   align-items: center;
-  border: 1px solid var(--pale-green);
+  border: 1px solid var(--lime-green);
   border-radius: 5px;
   background-color: var(--old-lace);
 }
@@ -13,12 +13,12 @@
   outline: none;
   padding: 8px;
   border-radius: 5px;
-  color: var(--dark-green);
+  color: var(--forest-green);
   background-color: transparent;
 }
 
 .searchInput::placeholder {
-  color: var(--dark-green);
+  color: var(--forest-green);
   opacity: 0.5;
 }
 
@@ -28,13 +28,13 @@
   top: 0.15rem;
   right: 0.2rem;
   border-radius: 50%;
-  color: var(--dark-green);
-  background-color: var(--pale-green);
-  border: 1px solid var(--dark-green);
+  color: var(--forest-green);
+  background-color: var(--lime-green);
+  border: 1px solid var(--forest-green);
 }
 
 .searchIcon:hover {
-  color: var(--pale-green);
-  background-color: var(--dark-green);
-  border: 1px solid var(--pale-green);
+  color: var(--lime-green);
+  background-color: var(--forest-green);
+  border: 1px solid var(--lime-green);
 }

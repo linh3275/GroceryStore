@@ -2,18 +2,18 @@
 
 .header {
     padding: 0;
-    background: var(--dark-green);
-    border-bottom: 1px solid var(--pale-green);
+    background: var(--forest-green);
+    border-bottom: 1px solid var(--lime-green);
 }
 
 .header a {
-    color: var(--dark-green);
-    background-color: var(--pale-green);
+    color: var(--forest-green);
+    background-color: var(--lime-green);
 }
 
 .header a:hover {
     cursor: pointer;
-    color: var(--dark-green);
+    color: var(--forest-green);
     background-color: var(--old-lace);
 }
 
@@ -84,8 +84,8 @@
 }
 
 .menu a:hover {
-    color: var(--pale-green);
-    background-color: var(--dark-green);
+    color: var(--lime-green);
+    background-color: var(--forest-green);
 }
 
 .cart {
@@ -96,7 +96,7 @@
 
 .cart_count {
     background-color: var(--old-lace);
-    color: var(--dark-green);
+    color: var(--forest-green);
     padding: 0.1rem 0.22rem;
     position: absolute;
     bottom: 1.2rem;
@@ -106,5 +106,5 @@
 }
 
 .cart:hover .cart_count {
-    background-color: var(--pale-green);
+    background-color: var(--lime-green);
 }

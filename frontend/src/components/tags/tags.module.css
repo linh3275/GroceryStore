@@ -11,11 +11,12 @@
     border-radius: 0.2rem;
     text-align: center;
     text-transform: capitalize;
-    color: var(--dark-green);
-    background: var(--pale-green);
+    color: var(--forest-green);
+    background: var(--lime-green);
+    border: 1px solid var(--forest-green);
 }
 
 .container a:hover {
-    color: var(--pale-green);
-    background-color: var(--dark-green);
+    color: var(--lime-green);
+    background-color: var(--forest-green);
 }
