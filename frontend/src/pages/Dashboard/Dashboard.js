@@ -12,7 +12,7 @@ export default function Dashboard() {
             <div className={classes.menu}>
                 {allItems.filter(item => user.isAdmin || !item.forAdmin)
                 .map(item => 
-                        <Link to={item.url} style={{backgroundColor: item.bgColor, color: item.color}}>
+                        <Link key={item.title} to={item.url} style={{backgroundColor: item.bgColor, color: item.color}}>
                             <img src={item.imageUrl} alt={item.title} />
                             <h2>{item.title}</h2>
                         </Link>

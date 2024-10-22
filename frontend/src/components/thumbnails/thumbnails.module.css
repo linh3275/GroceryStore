@@ -58,7 +58,7 @@
 .navbar .activeView {
   color: var(--lime-green);
   background: var(--forest-green);
-  border: 2px solid var(--lime-green);
+  border: 1px solid var(--lime-green);
 }
   
 .product_container {

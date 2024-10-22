@@ -25,3 +25,16 @@ export const getById = async productId => {
     const {data} = await axios.get('/api/products/' + productId);
     return data;
 };
+
+export async function deleteById(productId) {
+    await axios.delete('/api/products' + productId);
+};
+
+export async function update(product) {
+    await axios.put('/api/products', product);
+};
+
+export async function add(product) {
+    const {data} = await axios.post('/api/products', product);
+    return data;
+};

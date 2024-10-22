@@ -2,7 +2,6 @@ import React, { useEffect, useReducer } from 'react'
 import { getAll, search, getAllTags, getAllByTag } from '../../services/productservice';
 import ThumbNails from '../../components/thumbnails/thumbnails';
 import { useParams } from 'react-router-dom';
-import Tags from '../../components/tags/tags';
 import NotFound from '../../components/notfound/notfound';
 
 const initialState = {products: [], tags: []};

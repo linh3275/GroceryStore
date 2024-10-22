@@ -3,7 +3,12 @@ import classes from './search.module.css';
 import { SearchIcon } from '../icon';
 import { useNavigate, useParams } from 'react-router-dom';
 
-export default function Search() {
+Search.defaultProps = {
+  searchRoute: '/search',
+  defaultRoute: '/',
+}
+
+export default function Search({ searchRoute, defaultRoute }) {
 
     const [term, setTerm] = useState('');
     const navigate = useNavigate();
@@ -15,9 +20,9 @@ export default function Search() {
 
     const search = async () => {
       if (term.trim()) {
-          navigate('/search/' + term);
+          navigate(searchRoute + term);
       } else {
-          navigate('/');
+          navigate(defaultRoute);
       }
     }
 

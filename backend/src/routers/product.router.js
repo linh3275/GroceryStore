@@ -2,6 +2,7 @@ import { Router } from "express";
 
 import { ProductModel } from "../models/products.model.js";
 import handler from 'express-async-handler';
+import admin from "../middleware/admin.mid.js";
 
 const router = Router();
 
@@ -62,6 +63,46 @@ router.get('/tag/:tag', handler( async (req, res) => {
 router.get('/:productId', handler( async (req, res) => {
         const {productId} = req.params;
         const product = await ProductModel.findById(productId);
+        res.send(product);
+    })
+);
+
+router.delete('/:productId', admin, handler( async (req, res) => {
+        const {productId} = req.params;
+        await ProductModel.deleteOne({ _id: productId });
+        res.send();
+    })
+);
+
+router.put('/', admin, handler( async (req, res) => {
+        const {id, name, description, price, tags, favorite, imageUrl, origins} = req.body;
+
+        await ProductModel.updateOne(
+            { _id: id },
+            {
+                name,description, price,
+                tags: tags.split ? tags.split(',') : tags,
+                favorite, imageUrl,
+                origins: origins.split ? origins.split(',') : origins,
+            }
+        );
+    })
+);
+
+router.post('/', admin, handler( async (req, res) => {
+        const {name, description, price, tags, favorite, imageUrl, origins} = req.body;
+
+        const product = new ProductModel(
+            {
+                name,description, price,
+                tags: tags.split ? tags.split(',') : tags,
+                favorite, imageUrl,
+                origins: origins.split ? origins.split(',') : origins,
+            }
+        );
+
+        await product.save();
+
         res.send(product);
     })
 );

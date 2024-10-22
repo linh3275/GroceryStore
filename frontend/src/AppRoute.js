@@ -5,11 +5,14 @@ import ProductPage from './pages/Product/productpage'
 import CartPage from './pages/Cart/cartpage'
 import LoginPage from './pages/Login/loginpage'
 import RegisterPage from './pages/Register/registerpage'
-import AuthRoute from './components/authroute/authrout'
+import AuthRoute from './components/authroute/authroute'
 import CheckoutPage from './pages/CheckOut/Checkout'
 import PaymentPage from './pages/Payment/payment'
 import ProfilePage from './pages/Profile/profilepage'
 import Dashboard from './pages/Dashboard/Dashboard'
+import AdminRoute from './components/authroute/adminroute'
+import ProductManagementPage from './pages/ProductManagement/productmanagementpage'
+import ProductEdit from './pages/ProductManagement/productedit'
 
 export default function AppRoute() {
   return <Routes>
@@ -46,6 +49,27 @@ export default function AppRoute() {
         <AuthRoute>
           <Dashboard />
         </AuthRoute>
+        } 
+    />;
+    <Route path='/admin/products/:searchTerm?'
+       element={
+        <AdminRoute>
+          <ProductManagementPage />
+        </AdminRoute>
+        } 
+    />
+    <Route path='/admin/addProduct'
+       element={
+        <AdminRoute>
+          <ProductEdit />
+        </AdminRoute>
+        } 
+    />
+    <Route path='/admin/editProduct/:productId'
+       element={
+        <AdminRoute>
+          <ProductEdit />
+        </AdminRoute>
         } 
     />
   </Routes>

@@ -43,7 +43,7 @@ router.post('/register', handler( async (req, res) => {
             name,
             email: email.toLowerCase(),
             password: encryptedPassword,
-            address
+            address,
         };
 
         const result = await UserModel.create(newUser);

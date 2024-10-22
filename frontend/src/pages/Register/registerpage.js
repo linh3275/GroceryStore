@@ -62,45 +62,45 @@ export default function RegisterPage() {
                     error={errors.email}
                 />
 
-            <Input
-                type="password"
-                label="Password"
-                {...register('password', {
-                required: true,
-                minLength: 5,
-                })}
-                error={errors.password}
-            />
+                <Input
+                    type="password"
+                    label="Password"
+                    {...register('password', {
+                    required: true,
+                    minLength: 5,
+                    })}
+                    error={errors.password}
+                />
 
-            <Input
-                type="password"
-                label="Confirm Password"
-                {...register('confirmPassword', {
-                required: true,
-                validate: value => value !== getValues('password')
-                ? 'Password is not match !' : true,
-                })}
-                error={errors.confirmPassword}
-            />
+                <Input
+                    type="password"
+                    label="Confirm Password"
+                    {...register('confirmPassword', {
+                    required: true,
+                    validate: value => value !== getValues('password')
+                    ? 'Password is not match !' : true,
+                    })}
+                    error={errors.confirmPassword}
+                />
 
-            <Input
-                type="text"
-                label="Address"
-                {...register('address', {
-                required: true,
-                minLength: 10,
-                })}
-                error={errors.address}
-            />
+                <Input
+                    type="text"
+                    label="Address"
+                    {...register('address', {
+                    required: true,
+                    minLength: 10,
+                    })}
+                    error={errors.address}
+                />
 
-            <Button type="submit" text="Register" />
+                <Button type="submit" text="Register" />
 
-            <div className={classes.login}>
-                Already a user? &nbsp;
-                <Link to={`/login${returnUrl ? '?returnUrl=' + returnUrl : ''}`}>
-                    Login Here !
-                </Link>
-            </div>
+                <div className={classes.login}>
+                    Already a user? &nbsp;
+                    <Link to={`/login${returnUrl ? '?returnUrl=' + returnUrl : ''}`}>
+                        Login Here !
+                    </Link>
+                </div>
 
             </form>
         </div>
