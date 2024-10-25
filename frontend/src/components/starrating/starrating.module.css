@@ -1,5 +1,8 @@
 
+@import '../../index.css';
+
 .rating {
     display: flex;
     align-items: center;
+    color: var(--forest-green);
 }

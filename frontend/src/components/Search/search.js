@@ -20,7 +20,7 @@ export default function Search({ searchRoute, defaultRoute }) {
 
     const search = async () => {
       if (term.trim()) {
-          navigate(searchRoute + term);
+          navigate(searchRoute + '/' + term);
       } else {
           navigate(defaultRoute);
       }

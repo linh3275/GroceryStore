@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
+import { toast } from 'react-toastify';
 
 const CartContext = createContext(null);
 const cart_key = 'cart';
@@ -56,6 +57,7 @@ export default function CartProvider({children}) {
       } else {
         setCartItems([...cartItems, { product, quantity: 1, price: product.price }]);
       }
+      toast.success(`Đã thêm ${product.name} vào giỏ hàng`);
     };
 
     const clearCart = () => {

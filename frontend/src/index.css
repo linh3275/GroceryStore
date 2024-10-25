@@ -1,13 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Sevillana&display=swap');
 
 :root {
+
+    --linen: #f9f2e6;
+    --old-lace: #f7f9e6;
+    --alabaster: #edf9e6;
+    --honeydew1: #e6f9e9;
+    --honeydew2: #e6f9f2;
+    --bubbles: #e6f7f9;
+    --lavender: #e6edf9; /* web */
+
+
+    --Aquamarine: #88ffc3;
+
     --forest-green: #004b1a;
-    --lime-green: #c4ff88;
-    --mint-green: #c8e6c9;
+    --light-green: #89ff88;
     --pale-green: #98FB98;
-    --patone-green: #1b5e20;
+    --patone-green: #1b5e20; /* Cal Poly Pomona Green */
+    --tea-green: #c8e6c9;
+    --UFO-green: #2ecc71;
+
+    --menthol: #c4ff88;
+
+    --chinese-white: #d4efdf;
     
-    --old-lace: #f9f2e6;
 }
 
 * {
@@ -16,11 +32,13 @@
 }
 
 html{
-    font-size: 18px;
+    font-size: 1.125rem;
+    /* rem = px/16 */
 }
 
 body {
     margin: 0;
+    background-color: var(--honeydew1);
 }
 
 a {

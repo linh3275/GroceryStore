@@ -1,44 +1,42 @@
-/* cần chỉnh lại cho đẹp mắt */
+
+@import '../../index.css';
 
 .container {
     display: flex;
-    justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
-    margin: 3rem;
+    margin: 1rem 3rem;
 }
 
-.container > * {
-    min-width: 25rem;
-    max-width: 40rem;
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.name {
+    text-transform: capitalize;
+    font-size: 1.4rem;
+    margin: 1rem 0;
+    color: green;
 }
 
 .image {
     border-radius: 3rem;
-    flex: 1 0;
     object-fit: cover;
-    height: 35rem;
-    margin: 1rem;
+    height: 15rem;
 }
 
 .details {
-    width: 100%;
     display: flex;
     flex-direction: column;
-    flex: 1 0;
     border-radius: 3rem;
-    padding: 2rem;
+    padding: 1rem;
     color: black;
 }
 
 .header {
     display: flex;
     justify-content: space-between;
-}
-
-.name {
-    font-size: 2rem;
-    font-weight: bold;
 }
 
 .origins {
@@ -56,6 +54,10 @@
     background-color: aliceblue;
 }
 
+.tags {
+    width: 5rem;
+}
+
 .price {
     font-size: 1.8rem;
     margin: 2rem;
@@ -68,41 +70,30 @@
     color: darkgrey;
 }
 
-.container button {
-    color: white;
-    background-color: red;
+.addToCart {
+    width: 10rem;
     border: none;
-    font-size: 1.2rem;
-    padding: 1rem;
-    border-radius: 10rem;
-    outline: none;
+    border-radius: 2rem;
+    padding: 0.15rem;
+    margin: 0 0 0.3rem 0.3rem;
+    color: var(--forest-green);
+    background-color: var(--forest-green);
 }
 
-.container button:hover {
-    opacity: 0.9;
+.neonbbtn {
+    display: flex;
+    align-items: center;
     cursor: pointer;
+    background-color: var(--pale-green);
+    margin: 0.2rem 0.4rem 0;
+    padding: 4px;
+    border: none;
+    border-radius: 1rem;
+    transition: 300ms;
 }
 
-.notification {
-    background-color: #4CAF50; /* Màu xanh lá khi thành công */
-    color: white;
-    padding: 10px;
-    margin-top: 15px;
-    text-align: center;
-    border-radius: 5px;
-    font-size: 16px;
-    animation: fadeOut 3s forwards; /* Animation để ẩn sau 3 giây */
-}
-
-/* Tạo hiệu ứng biến mất từ từ */
-@keyframes fadeOut {
-    0% {
-        opacity: 1;
-    }
-    90% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
+.neonbbtn:hover {
+    position: relative;
+    top: 2px;
+    border-radius: 2rem;
 }

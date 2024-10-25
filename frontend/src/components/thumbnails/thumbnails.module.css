@@ -4,7 +4,7 @@
   display: flex;
   width: 100%;
   padding: 2rem 1rem;
-  background: var(--old-lace);
+  background: var(--linen);
 }
 
 .bubble {
@@ -48,7 +48,7 @@
   border-radius: 2rem;
   border: 1px solid var(--forest-green);
   color: var(--forest-green);
-  background: var(--lime-green);
+  background: var(--chinese-white);
   cursor: pointer;
   padding: 0.5rem 0.6rem;
   margin: 0 1rem 0 0;
@@ -56,9 +56,9 @@
 
 .navbar span:hover,
 .navbar .activeView {
-  color: var(--lime-green);
-  background: var(--forest-green);
-  border: 1px solid var(--lime-green);
+  color: var(--forest-green);
+  background: var(--menthol);
+  border: 1px solid var(--forest-green);
 }
   
 .product_container {
@@ -70,29 +70,33 @@
 
 .product {
   border-radius: 0.2rem;
-  background-color: white;
+  border: 1px solid var(--patone-green);
+  background-color: var(--honeydew1);
+
+  display: flex;
+  flex-direction: column;
 }
 
 .product:hover {
-  border: 0.1rem solid var(--lime-green);
+  border: 0.1rem solid var(--menthol);
   box-shadow: 0.025rem 0.025rem 0.1rem var(--forest-green, 0.8),
              -0.025rem -0.025rem 0.1rem var(--forest-green, 0.8);
 }
 
 .image {
   width: 10rem;
-  margin: 0.2rem 0 0.15rem 0.21rem;
+  margin: 0.2rem 0 0.15rem 0.3rem;
   border-radius: 0.2rem;
 }
 
 .product:hover .image {
-  margin: 0.15rem;
+  margin: 0.15rem 0 0.15rem 0.24rem;
 }
 
 .name {
   margin: 0 0.4rem;
   text-transform: capitalize;
-  color: var(--forest-green);
+  color: green;
   overflow: hidden;
   text-overflow: ellipsis;
   height: 1.2rem;
@@ -100,19 +104,19 @@
 
 .price {
   margin: 0 0.4rem;
-  color: var(--forest-green);
+  color: var(--UFO-green);
   border-radius: 2rem;
 }
 
 .evaluation {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: start;
   margin: 0 0.4rem;
 }
 
 .favIcon {
-  color: var(--forest-green);
+  color: var(--UFO-green);
   cursor: pointer;
 }
 
@@ -124,7 +128,7 @@
 
 .addToCart {
   border: none;
-  border-radius: 0.25rem;
+  border-radius: 50%;
   padding: 0.15rem;
   margin: 0 0 0.3rem 0.3rem;
   color: var(--forest-green);
@@ -138,7 +142,7 @@
   background-color: var(--pale-green);
   padding: 4px;
   border: none;
-  border-radius: 2px;
+  border-radius: 50%;
   transition: 300ms;
 }
 
@@ -153,26 +157,3 @@
     text-align: center;
     margin-top: 10px;
   }
-
-  .notification {
-    background-color: #4CAF50; /* Màu xanh lá cây cho thông báo thành công */
-    color: white;
-    padding: 10px;
-    text-align: center;
-    border-radius: 5px;
-    margin-top: 15px;
-    font-size: 16px;
-    animation: fadeOut 3s forwards; /* Tạo hiệu ứng biến mất */
-}
-
-@keyframes fadeOut {
-    0% {
-        opacity: 1;
-    }
-    90% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
-}

@@ -7,17 +7,16 @@ import { FavoriteIcon, NotFavoriteIcon, ShoppingIcon } from '../icon';
 import useFavorite from '../hooks/favorite';
 import { useCart } from '../hooks/cart';
 import Tags from '../tags/tags';
+import NotFound from '../notfound/notfound';
 
 export default function ThumbNails({ products, tags }) {
   const { searchTerm } = useParams();  
   const { favItems, toggleFav } = useFavorite();
   const { addToCart } = useCart();
   
-  const [selectedCategory, setSelectedCategory] = useState('Tất cả');
   const [filteredProducts, setFilteredProducts] = useState(products);
   const [viewMode, setViewMode] = useState('all');
   const [searchResults, setSearchResults] = useState(products);  
-  const [showNotification, setShowNotification] = useState(false);
 
   // Xử lý tìm kiếm
   useEffect(() => {
@@ -46,12 +45,8 @@ export default function ThumbNails({ products, tags }) {
       }
     };
 
-    const filteredByCategory = selectedCategory === 'Tất cả'
-      ? searchResults
-      : searchResults.filter((product) => product.tags.includes(selectedCategory));
-
-    setFilteredProducts(applyViewMode(filteredByCategory));
-  }, [searchResults, viewMode, favItems, selectedCategory]);
+    setFilteredProducts(applyViewMode(searchResults));
+  }, [searchResults, viewMode, favItems]);
 
   // Xử lý thay đổi chế độ xem
   const handleViewModeChange = (mode) => {
@@ -61,17 +56,14 @@ export default function ThumbNails({ products, tags }) {
   // Xử lý thêm vào giỏ hàng và hiển thị thông báo
   const handleAddToCart = (product) => {
     addToCart(product);
-    setShowNotification(true);
-
-    // Ẩn thông báo sau 3 giây
-    setTimeout(() => {
-      setShowNotification(false);
-    }, 3000);
   };
 
   return (
-    <div className={classes.container}>
-      <div className={classes.bubble}></div>
+
+    <>
+      { !products ? (<NotFound message="Product not found" linkText="Back to Homepage" />)
+      : <div className={classes.container}>
+      {/* <div className={classes.bubble}></div> */}
 
       <Tags tags={tags} />
 
@@ -146,13 +138,9 @@ export default function ThumbNails({ products, tags }) {
             </li>
           ))}
         </ul>
-
-        {showNotification && (
-          <div className={classes.notification}>
-            Sản phẩm đã được thêm vào giỏ hàng!
-          </div>
-        )}
       </div>
     </div>
+      }
+    </>
   );
 }

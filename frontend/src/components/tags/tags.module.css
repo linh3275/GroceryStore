@@ -12,11 +12,11 @@
     text-align: center;
     text-transform: capitalize;
     color: var(--forest-green);
-    background: var(--lime-green);
+    background: var(--chinese-white);
     border: 1px solid var(--forest-green);
 }
 
 .container a:hover {
-    color: var(--lime-green);
-    background-color: var(--forest-green);
+    background-color: var(--menthol);
+    border: 1px solid var(--forest-green);
 }

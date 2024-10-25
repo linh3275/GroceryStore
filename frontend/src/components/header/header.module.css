@@ -2,26 +2,29 @@
 
 .header {
     padding: 0;
-    background: var(--forest-green);
-    border-bottom: 1px solid var(--lime-green);
+    background: var(--patone-green);
+    border-bottom: 1px solid var(--Aquamarine);
+    height: 3rem;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .header a {
-    color: var(--forest-green);
-    background-color: var(--lime-green);
+    color: var(--patone-green);
+    background-color: var(--tea-green);
+    border: 1px solid var(--light-green);
 }
 
 .header a:hover {
     cursor: pointer;
-    color: var(--forest-green);
-    background-color: var(--old-lace);
+    background-color: var(--chinese-white);
 }
 
 .container {
     margin: 0 2rem;
     padding: 0 0.32rem;
     display: flex;
-    justify-content: space-between;
+    gap: 4rem;
     align-items: center;
 }
 
@@ -83,9 +86,13 @@
     margin-top: 0.2rem;
 }
 
+.menu a:first-child {
+    margin-top: 0.7rem;
+}
+
 .menu a:hover {
-    color: var(--lime-green);
-    background-color: var(--forest-green);
+    color: var(--patone-green);
+    background-color: var(--chinese-white);
 }
 
 .cart {
@@ -96,8 +103,8 @@
 
 .cart_count {
     background-color: var(--old-lace);
-    color: var(--forest-green);
-    padding: 0.1rem 0.22rem;
+    color: var(--patone-green);
+    padding: 0.18rem 0.22rem;
     position: absolute;
     bottom: 1.2rem;
     left: 1.5rem;
@@ -106,5 +113,6 @@
 }
 
 .cart:hover .cart_count {
-    background-color: var(--lime-green);
+    color: var(--menthol);
+    background-color: var(--patone-green);
 }

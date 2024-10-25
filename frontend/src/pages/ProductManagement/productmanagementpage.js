@@ -62,7 +62,7 @@ export default function ProductManagementPage() {
         {products && products.map(product => (
           <div key={product.id} className={classes.list_item}>
             <img src={product.imageUrl} alt={product.name} />
-            <Link to={'/product' + product.id}>{product.name}</Link>
+            <Link to={'/product/' + product.id}>{product.name}</Link>
             <Price price={product.price} />
             <div className={classes.actions}>
               <Link to={'/admin/editProduct/' + product.id}>Edit</Link>
