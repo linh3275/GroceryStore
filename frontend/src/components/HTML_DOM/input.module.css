@@ -1,4 +1,6 @@
 
+@import '../../index.css';
+
 .input {
     border: none;
     border-bottom: 0 solid gray;

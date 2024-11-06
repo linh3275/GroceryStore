@@ -29,3 +29,23 @@ export const updateProfile = async user => {
 export const changePassword = async password => {
     await axios.put('/api/users/changePassword', password);
 }
+
+export const getAllU = async searchTerm => {
+    const {data} = await axios.get('/api/users/getAll/' + (searchTerm ?? ''));
+    return data;
+}
+
+export const block = async userId => {
+    const {data} = await axios.put('/api/users/block/' + userId);
+    return data;
+}
+
+export const getById = async userId => {
+    const {data} = await axios.get('/api/users/getById/' + userId);
+    return data;
+}
+
+export const updateUser = async userData => {
+    const {data} = await axios.put('/api/users/update', userData);
+    return data;
+}

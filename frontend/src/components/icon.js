@@ -7,3 +7,8 @@ export { default as SearchIcon } from '@mui/icons-material/Search';
 export { default as FavoriteIcon } from '@mui/icons-material/Favorite';
 export { default as NotFavoriteIcon } from '@mui/icons-material/FavoriteBorder';
 export { default as ShoppingIcon } from '@mui/icons-material/ShoppingBasket';
+export { default as ProfileIcon } from '@mui/icons-material/AccountCircle';
+export { default as PeopleIcon } from '@mui/icons-material/PeopleOutline';
+export { default as CategoryIcon } from '@mui/icons-material/Category';
+export { default as ShippingIcon } from '@mui/icons-material/LocalShipping';
+export { default as DeleteIcon } from '@mui/icons-material/Delete';

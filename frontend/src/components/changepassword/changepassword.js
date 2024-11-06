@@ -1,8 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import Title from "../title/title";
-import Input from "../input/input";
-import Button from "../button/button";
+import Title from "../HTML_DOM/title";
+import Input from "../HTML_DOM/input";
+import Button from "../HTML_DOM/button";
 import { useAuth } from "../hooks/auth";
 
 export default function ChangePassword() {

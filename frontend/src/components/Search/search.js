@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import classes from './search.module.css';
-import { SearchIcon } from '../icon';
 import { useNavigate, useParams } from 'react-router-dom';
+import { SearchIcon } from '../icon';
+
+import classes from './search.module.css';
 
 Search.defaultProps = {
   searchRoute: '/search',

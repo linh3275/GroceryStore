@@ -13,6 +13,9 @@ import Dashboard from './pages/Dashboard/Dashboard'
 import AdminRoute from './components/authroute/adminroute'
 import ProductManagementPage from './pages/ProductManagement/productmanagementpage'
 import ProductEdit from './pages/ProductManagement/productedit'
+import UserManagement from './pages/ManagementPage/UserManagement/userManagement'
+import UserEdit from './pages/ManagementPage/UserManagement/userEdit'
+import OrderPage from './pages/Order/orderPage'
 
 export default function AppRoute() {
   return <Routes>
@@ -28,49 +31,70 @@ export default function AppRoute() {
         <AuthRoute>
           <CheckoutPage />
         </AuthRoute>
-        } 
+        }
     />
     <Route path='/payment'
        element={
         <AuthRoute>
           <PaymentPage />
         </AuthRoute>
-        } 
+        }
+    />
+    <Route path='/orders'
+       element={
+        <AuthRoute>
+          <OrderPage />
+        </AuthRoute>
+        }
     />
     <Route path='/profile'
        element={
         <AuthRoute>
           <ProfilePage />
         </AuthRoute>
-        } 
+        }
     />
     <Route path='/dashboard'
        element={
         <AuthRoute>
           <Dashboard />
         </AuthRoute>
-        } 
+        }
     />;
     <Route path='/admin/products/:searchTerm?'
        element={
         <AdminRoute>
           <ProductManagementPage />
         </AdminRoute>
-        } 
+        }
     />
     <Route path='/admin/addProduct'
        element={
         <AdminRoute>
           <ProductEdit />
         </AdminRoute>
-        } 
+        }
     />
     <Route path='/admin/editProduct/:productId'
        element={
         <AdminRoute>
           <ProductEdit />
         </AdminRoute>
-        } 
+        }
+    />
+    <Route path='/admin/users/:searchTerm?'
+       element={
+        <AdminRoute>
+          <UserManagement />
+        </AdminRoute>
+        }
+    />
+    <Route path='/admin/editUser/:userId'
+       element={
+        <AdminRoute>
+          <UserEdit />
+        </AdminRoute>
+        }
     />
   </Routes>
 }

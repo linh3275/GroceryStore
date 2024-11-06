@@ -3,7 +3,7 @@ import classes from './productmanagementpage.module.css';
 import { Link, useParams } from 'react-router-dom';
 import { deleteById, getAll, search } from '../../services/productservice';
 import NotFound from '../../components/notfound/notfound';
-import Title from '../../components/title/title';
+import Title from '../../components/HTML_DOM/title';
 import Search from '../../components/Search/search';
 import Price from '../../components/price/price';
 import { toast } from 'react-toastify';
@@ -39,7 +39,7 @@ export default function ProductManagementPage() {
 
     await deleteById(product.id);
     toast.success(`"${product.name}" has been removed !`);
-    setProducts(product.filter(p => p.id !== product.id));
+    setProducts(products.filter(p => p.id !== product.id));
   }
 
   return (

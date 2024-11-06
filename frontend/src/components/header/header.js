@@ -14,9 +14,7 @@ export default function Header() {
   return (
     <header className={classes.header}>
       <div className={classes.container}>
-        <Link to="/" className={classes.logo}>
-          Dream Market
-        </Link>
+        <Link to="/" className={classes.logo}> Market </Link>
 
         <div className={classes.search}>
           <Search />
@@ -26,7 +24,7 @@ export default function Header() {
           <ul>
             <li>
               <Link to="/cart" className={classes.cart}>
-                <CartIcon sx={{fontSize: 25}}/>
+                <CartIcon />
                 {cart.totalCount > 0 && <span className={classes.cart_count}>{cart.totalCount}</span> }
               </Link>
             </li>

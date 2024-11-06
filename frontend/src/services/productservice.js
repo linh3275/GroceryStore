@@ -16,7 +16,7 @@ export const getAllTags = async () => {
 };
 
 export const getAllByTag = async tag => {
-    if (tag === 'Loại mặt hàng') return getAll();
+    if (tag === 'Danh Mục') return getAll();
     const {data} = await axios.get('/api/products/tag/' + tag);
     return data;
 };
@@ -27,7 +27,8 @@ export const getById = async productId => {
 };
 
 export async function deleteById(productId) {
-    await axios.delete('/api/products' + productId);
+    await axios.delete('/api/products/' + productId);
+    
 };
 
 export async function update(product) {

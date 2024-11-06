@@ -3,10 +3,10 @@ import { useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom'
 import { getById, update, add } from '../../services/productservice';
 import classes from './productedit.module.css';
-import Title from '../../components/title/title';
-import InputContainer from '../../components/inputcontainer/inputcontainer';
-import Input from '../../components/input/input';
-import Button from '../../components/button/button';
+import Title from '../../components/HTML_DOM/title';
+import InputContainer from '../../components/HTML_DOM/inputcontainer';
+import Input from '../../components/HTML_DOM/input';
+import Button from '../../components/HTML_DOM/button';
 import { uploadImage } from '../../services/uploadservice';
 import { toast } from 'react-toastify';
 

@@ -8,6 +8,7 @@ export const UserSchema = new Schema(
         password: {type: String, require: true},
         address: {type: String, require: true},
         isAdmin: {type: Boolean, default: false},
+        isBlocked: {type: Boolean, default: false},
     },
     {
         timestamps: true,

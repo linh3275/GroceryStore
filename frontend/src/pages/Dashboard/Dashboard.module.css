@@ -1,41 +1,30 @@
 
-.container {
-    margin: auto;
-    margin-top: 1rem;
-    max-width: 70rem;
-    width: 100%;
-}
+@import '../../index.css';
 
-.menu {
+.container {
+    margin: 1rem 0;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
 }
 
-.menu a {
-    width: 22rem;
-    height: 11rem;
-    margin: 1.5rem 2rem;
-    background-color: whitesmoke;
-    box-shadow: 0 0 5px 1px;
-    border-radius: 1rem;
+.navbar {
     display: flex;
+    gap: 1rem;
+}
+
+.navbar a {
+    display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    justify-content: space-around;
-    color: #444444;
+    gap: 1rem;
+    color: var(--patone-green);
+    background-color: var(--tea-green);
+    border-radius: 1rem;
+    border: 1px solid var(--patone-green);
+    padding: 0 2rem;
 }
 
-.menu a:hover {
-    box-shadow: 2px 2px 10px 1px gray;
-}
-
-.menu img {
-    width: 10rem;
-    height: 10rem;
-    margin: 1rem;
-}
-
-.menu h2 {
-    font-size: 2.5rem;
-    margin-right: 2rem;
+.navbar a:hover {
+    box-shadow: 0 0 0.1rem 0.1rem var(--light-green);
+    background-color: var(--chinese-white);
 }

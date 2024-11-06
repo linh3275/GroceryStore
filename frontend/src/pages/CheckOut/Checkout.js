@@ -1,16 +1,19 @@
 import React, { useState } from "react";
-import { useCart } from "../../components/hooks/cart";
-import { useAuth } from "../../components/hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+
+import { useCart } from "../../components/hooks/cart";
+import { useAuth } from "../../components/hooks/auth";
 import { createOrder } from "../../services/orderservice";
-import classes from './Checkout.module.css';
-import Title from "../../components/title/title";
-import Input from "../../components/input/input";
-import Button from "../../components/button/button";
+
+import Title from "../../components/HTML_DOM/title";
+import Input from "../../components/HTML_DOM/input";
+import Button from "../../components/HTML_DOM/button";
 import OrderList from "../../components/orderlist/orderlist";
 import Map from "../../components/map/map";
+
+import classes from './Checkout.module.css';
 
 export default function CheckoutPage() {
 

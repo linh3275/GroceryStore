@@ -3,9 +3,10 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../../components/hooks/auth';
 import classes from './loginpage.module.css';
-import Title from '../../components/title/title';
-import Input from '../../components/input/input';
-import Button from '../../components/button/button';
+import Title from '../../components/HTML_DOM/title';
+import Input from '../../components/HTML_DOM/input';
+import Button from '../../components/HTML_DOM/button';
+import { EMAIL } from '../../components/constants/patterns';
 
 export default function LoginPage() {
   const {
@@ -36,10 +37,7 @@ export default function LoginPage() {
             label="Email"
             {...register('email', {
               required: true,
-              pattern: {
-                value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,63}$/i,
-                message: 'Email is not valid !',
-              }
+              pattern: EMAIL,
             })}
             error={errors.email}
           />

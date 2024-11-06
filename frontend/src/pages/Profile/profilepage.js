@@ -2,9 +2,9 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../components/hooks/auth";
 import classes from './profilepage.module.css';
-import Title from "../../components/title/title";
-import Input from "../../components/input/input";
-import Button from "../../components/button/button";
+import Title from "../../components/HTML_DOM/title";
+import Input from "../../components/HTML_DOM/input";
+import Button from "../../components/HTML_DOM/button";
 import ChangePassword from "../../components/changepassword/changepassword";
 
 export default function ProfilePage() {

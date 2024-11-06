@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import classes from './paymentpage.module.css';
 import { getNewOrderForCurrentUser } from "../../services/orderservice";
-import Title from "../../components/title/title";
+import Title from "../../components/HTML_DOM/title";
 import OrderList from "../../components/orderlist/orderlist";
 import Map from "../../components/map/map";
 import PaymentButtons from "../../components/paymentbutton/paymentbtn";

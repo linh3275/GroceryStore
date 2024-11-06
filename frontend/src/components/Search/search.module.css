@@ -3,6 +3,7 @@
 .searchBox {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   border: 1px solid var(--light-green);
   border-radius: 5px;
   background-color: var(--chinese-white);

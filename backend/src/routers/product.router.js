@@ -33,7 +33,7 @@ router.get('/tags', handler( async (req, res) => {
         ]).sort({ count: -1 });
         
         const all = {
-            name: 'Loại mặt hàng',
+            name: 'Danh Mục',
             count: await ProductModel.countDocuments(),
         };
 
@@ -86,6 +86,8 @@ router.put('/', admin, handler( async (req, res) => {
                 origins: origins.split ? origins.split(',') : origins,
             }
         );
+
+        res.send();
     })
 );
 

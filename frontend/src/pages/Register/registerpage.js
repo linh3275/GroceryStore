@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
-import Input from '../../components/input/input';
-import Title from '../../components/title/title';
-import Button from '../../components/button/button';
+import Input from '../../components/HTML_DOM/input';
+import Title from '../../components/HTML_DOM/title';
+import Button from '../../components/HTML_DOM/button';
 import classes from './registerpage.module.css';
 import { useAuth } from '../../components/hooks/auth';
+import { EMAIL } from '../../components/constants/patterns';
 
 
 export default function RegisterPage() {
@@ -54,10 +55,7 @@ export default function RegisterPage() {
                     label="Email"
                     {...register('email', {
                         required: true,
-                        pattern: {
-                            value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,63}$/i,
-                            message: 'Email is not valid !', 
-                        }
+                        pattern: EMAIL,
                     })}
                     error={errors.email}
                 />

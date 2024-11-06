@@ -8,6 +8,7 @@ import handler from 'express-async-handler';
 import { UserModel } from '../models/user.model.js';
 import bcrypt from 'bcryptjs';
 import auth from '../middleware/auth.mid.js';
+import admin from '../middleware/admin.mid.js';
 
 const PASSWORD_HASH_SALT_ROUNDS = 10;
 
@@ -84,6 +85,50 @@ router.put('/changePassword', auth, handler(async (req, res) => {
 
         res.send();
     })
+);
+
+router.get('/getAll/:searchTerm?', admin, handler (async (req, res) => {
+        const {searchTerm} = req.params;
+
+        const filter = searchTerm
+        ? {name: { $regex: new RegExp(searchTerm, 'i' ) } }
+        : {};
+
+        const users = await UserModel.find(filter, {password: 0});
+        res.send(users);
+    })
+);
+
+router.put('/block/:userId', admin, handler (async (req, res) => {
+        const {userId} = req.params;
+
+        if (userId === req.user.id) {
+            res.status(bad_request).send("Can't block yourself !");
+            return;
+        }
+
+        const user = await UserModel.findById(userId);
+        user.isBlocked = !user.isBlocked;
+        user.save();
+
+        res.send(user.isBlocked);
+    })
+);
+
+router.get('/getById/:userId', admin, handler (async (req, res) => {
+        const {userId} = req.params;
+
+        const user = await UserModel.findById(userId, {password: 0});
+        res.send(user);
+    })
+);
+
+router.put('/update', admin, handler (async (req, res) => {
+    const { id, name, email, address, isAdmin} = req.body;
+
+    const user = await UserModel.findByIdAndUpdate(id, {password: 0});
+    res.send();
+})
 );
 
 const genTokenRes = user => {

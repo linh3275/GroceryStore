@@ -7,7 +7,6 @@ import { FavoriteIcon, NotFavoriteIcon, ShoppingIcon } from '../icon';
 import useFavorite from '../hooks/favorite';
 import { useCart } from '../hooks/cart';
 import Tags from '../tags/tags';
-import NotFound from '../notfound/notfound';
 
 export default function ThumbNails({ products, tags }) {
   const { searchTerm } = useParams();  
@@ -61,8 +60,7 @@ export default function ThumbNails({ products, tags }) {
   return (
 
     <>
-      { !products ? (<NotFound message="Product not found" linkText="Back to Homepage" />)
-      : <div className={classes.container}>
+      { <div className={classes.container}>
       {/* <div className={classes.bubble}></div> */}
 
       <Tags tags={tags} />
@@ -129,7 +127,7 @@ export default function ThumbNails({ products, tags }) {
                   className={classes.addToCart} 
                   onClick={() => handleAddToCart(product)} 
                 >
-                  <div className={classes.neonbbtn}>
+                  <div className={classes.cartbtn}>
                     <ShoppingIcon fontSize='small' />
                   </div>
                 </button>
