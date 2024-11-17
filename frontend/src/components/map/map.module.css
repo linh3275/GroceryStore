@@ -1,33 +1,42 @@
 
+@import '../../index.css';
+
 .container {
-    position: relative;
+    text-align: center;
     width: 35rem;
     height: 22rem;
-    text-align: center;
 }
 
 .map {
-    width: 100% !important;
-    height: 100% !important;
+    width: 100%;
+    height: 100%;
+    background-color: var(--lavender);
+    border-radius: 1rem;
+    border: 1px solid var(--patone-green);
 }
 
 .findlocation {
-    position: absolute;
-    margin: auto;
-    width: 12rem;
-    min-height: 2.5rem;
+    background-color: var(--chinese-white);
+    color: var(--patone-green);
+    border: 1px solid var(--patone-green);
+    border-radius: 0 0 5rem 5rem;
     font-size: 1rem;
-    top: 0;
+    margin: auto;
+    min-height: 2.5rem;
+    position: absolute;
+    width: 12rem;
+    top: 0.1rem;
     left: 0;
     right: 0;
-    z-index: 10;
-    background-color: white;
     cursor: pointer;
-    border-radius: 0 0 1rem 1rem;
-    border: none;
-    border-top: 1px solid lightgray;
+    text-transform: capitalize;
+    z-index: 1000;
 }
 
 .findlocation:hover {
-    background-color: whitesmoke;
+    background-color: var(--tea-green);
+}
+
+.popup {
+    text-transform: capitalize;
 }

@@ -35,7 +35,7 @@
     display: flex;
     flex-direction: column;
     flex: 3;
-    border: 1px solid var(--light-green);
+    border: 1px solid var(--patone-green);
     border-radius: 1rem;
     background-color: var(--alabaster);
     padding: 1rem;
@@ -85,9 +85,8 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    width: 1.5rem;
-    height: 1.5rem;
-    border: 1px solid var(--light-green);
+    width: 1rem;
+    height: 1rem;
     border-radius: 2rem;
     color: var(--patone-green);
     background-color: var(--honeydew2);
@@ -103,7 +102,7 @@
     text-align: center;
     color: var(--patone-green);
     background-color: var(--honeydew2);
-    border: 1px solid var(--light-green);
+    border: 1px solid var(--patone-green);
     border-radius: 2rem;
     outline: none;
 }
@@ -123,7 +122,7 @@
 .remove_btn {
     color: var(--patone-green);
     background-color: var(--honeydew2);
-    border: 1px solid var(--light-green);
+    border: 1px solid var(--patone-green);
     border-radius: 0.5rem;
     padding-top: 0.2rem;
 }
@@ -139,7 +138,7 @@
     justify-content: space-between;
     align-items: center;
     height: 10rem;
-    border: 1px solid var(--light-green);
+    border: 1px solid var(--patone-green);
     border-radius: 1rem;
     background-color: var(--linen);
     color: var(--patone-green);
@@ -160,7 +159,7 @@
     text-align: center;
     color: var(--patone-green);
     background-color: var(--bubbles);
-    border: 1px solid var(--light-green);
+    border: 1px solid var(--patone-green);
     padding: 0.5rem 1rem;
 }
 

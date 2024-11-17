@@ -6,34 +6,6 @@
   padding: 2rem 1rem;
   background: var(--linen);
 }
-
-.bubble {
-  position: absolute;
-  overflow: hidden;
-  width: 1%;
-  height: 2%;
-  left: 50%;
-  bottom: -50%;
-  background: radial-gradient(circle, #4fc3dc, transparent);
-  border-radius: 50%;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
-  animation: bubbleMove 3s linear;
-  opacity: 0.4;
-}
-
-@keyframes bubbleMove {
-  0% {
-      transform: translateY(20vh) scale(0.5);
-      opacity: 0;
-  }
-  50% {
-      opacity: 1;
-  }
-  100% {
-      transform: translateY(-140vh) scale(2);
-      opacity: 0;
-  }
-}
   
 .mainContent {
   width: 85%;
@@ -57,7 +29,7 @@
 .navbar span:hover,
 .navbar .activeView {
   color: var(--forest-green);
-  background: var(--menthol);
+  background: var(--Aquamarine);
   border: 1px solid var(--forest-green);
 }
   
@@ -81,6 +53,10 @@
              -0.025rem -0.025rem 0.1rem var(--forest-green, 0.8);
 }
 
+.link {
+  outline: none;
+}
+
 .image {
   width: 10rem;
   height: 10rem;
@@ -96,7 +72,7 @@
   color: green;
   overflow: hidden;
   text-overflow: ellipsis;
-  height: 1.2rem;
+  height: 2.2rem;
 }
 
 .price {
@@ -147,10 +123,3 @@
   color: var(--pale-green);
   transition: 500ms;
 }
-  
-  .stock {
-    font-size: 0.9rem;
-    color: #555;
-    text-align: center;
-    margin-top: 10px;
-  }

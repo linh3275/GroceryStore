@@ -75,12 +75,12 @@ router.delete('/:productId', admin, handler( async (req, res) => {
 );
 
 router.put('/', admin, handler( async (req, res) => {
-        const {id, name, description, price, tags, favorite, imageUrl, origins} = req.body;
+        const {id, name, description, price, tags, stars, favorite, imageUrl, origins} = req.body;
 
         await ProductModel.updateOne(
             { _id: id },
             {
-                name,description, price,
+                name, description, price, stars,
                 tags: tags.split ? tags.split(',') : tags,
                 favorite, imageUrl,
                 origins: origins.split ? origins.split(',') : origins,
@@ -92,11 +92,11 @@ router.put('/', admin, handler( async (req, res) => {
 );
 
 router.post('/', admin, handler( async (req, res) => {
-        const {name, description, price, tags, favorite, imageUrl, origins} = req.body;
+        const {name, description, price, stars, tags, favorite, imageUrl, origins} = req.body;
 
         const product = new ProductModel(
             {
-                name,description, price,
+                name, description, price, stars,
                 tags: tags.split ? tags.split(',') : tags,
                 favorite, imageUrl,
                 origins: origins.split ? origins.split(',') : origins,

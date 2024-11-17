@@ -29,7 +29,7 @@ export default function CheckoutPage() {
 
     const submit = async data => {
         if (!order.addressLatLng) {
-            toast.warning('Please select your location on the map.');
+            toast.warning('Hãy chọn vị trí bạn đang ở !');
             return;
         }
 
@@ -40,45 +40,51 @@ export default function CheckoutPage() {
     return (
         <>
             <form onSubmit={handleSubmit(submit)} className={classes.container}>
-                <div className={classes.content}>
-                    <Title title="Order Form" fontSize="1.6rem" />
-                    <div className={classes.inputs}>
-                        <Input
-                            defaultValue={user.name}
-                            label="Name"
-                            {...register('name')}
-                            error={errors.name}
-                        />
-                        <Input
-                            defaultValue={user.address}
-                            label="address"
-                            {...register('address')}
-                            error={errors.address}
-                        />
+                <div className={classes}>
+                    <div className={classes.info}>
+
+                        <Title title="Đơn đặt hàng" />
+
+                        <div className={classes.inputs}>
+                            <Input
+                                defaultValue={user.name}
+                                label="Tên khách hàng"
+                                {...register('name', {required: true})}
+                                error={errors.name}
+                            />
+                            
+                            <Input
+                                defaultValue={user.address}
+                                label="Địa chỉ nhận hàng"
+                                {...register('address', {required: true})}
+                                error={errors.address}
+                            />
+                        </div>
+
+                        <div className={classes}>
+                            <Title title="Chọn vị trí của bạn" />
+                            <Map
+                                location={order.addressLatLng}
+                                onChange={latlng => {
+                                    setOrder({ ...order, addressLatLng: latlng});
+                                }}
+                            />
+                        </div>
+                        
                     </div>
-                    <OrderList order={order} />
                 </div>
 
                 <div>
-                    <Title title="Choose your location" fontSize="1.6rem" />
-                    <Map
-                        location={order.addressLatLng}
-                        onChange={latlng => {
-                            setOrder({ ...order, addressLatLng: latlng});
-                        }}
-                    />
-                </div>
+                    <OrderList order={order} />
 
-                <div className={classes.btn_container}>
-                    <div className={classes.btns}>
+                    <div className={classes}>
                         <Button
                             type="submit"
                             text="Go to Payment"
-                            width="100%"
-                            height="3rem"
                         />
                     </div>
                 </div>
+
             </form>
         </>
     )

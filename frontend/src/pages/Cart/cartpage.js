@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../components/hooks/cart';
+
 import Title from '../../components/HTML_DOM/title';
 import Price from '../../components/price/price';
 import NotFound from '../../components/notfound/notfound';
-import { FavoriteIcon, DeleteIcon } from '../../components/icon';
+
+import { FavoriteIcon, AddIcon, MinusIcon, DeleteIcon } from '../../components/icon';
 
 import classes from './cartpage.module.css';
 
@@ -44,7 +46,7 @@ export default function CartPage() {
                     className={classes.quantityButton}
                     onClick={() => handleQuantityChange(item, item.quantity - 1)}
                   >
-                    -
+                    <MinusIcon />
                   </button>
 
                   <input
@@ -58,7 +60,7 @@ export default function CartPage() {
                     className={classes.quantityButton}
                     onClick={() => handleQuantityChange(item, item.quantity + 1)}
                   >
-                    +
+                    <AddIcon />
                   </button>
                 </div>
 

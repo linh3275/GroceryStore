@@ -65,15 +65,22 @@ export default function ProductPage() {
                                 </span>
                             </div>
                             
-                            {detail && <span>Dầu gội nam xuất xứ từ ....</span> }
+                            {detail && product.description && (
+                                <span className={classes.des}>{product.description}</span>
+                            )}
 
                             { tags && product.tags && (
                                 <Tags tags={product.tags.map(tag => ({name: tag}))} productPage={true} />
                             )}
                             
-                            { origin && product.origins?.map(origin => (
-                                <span key={origin}>{origin}</span>
-                            ))}
+                            {origin && product.origins && (
+                                <div className={classes.ori}>
+                                    {product.origins.map((origin, index) => (
+                                        <span key={index} className={classes.oriTag}>{origin}</span>
+                                    ))}
+                                </div>
+                            )}
+
                         </div>
 
                         <div className={classes.evaluation}>

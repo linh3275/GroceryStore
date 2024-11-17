@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+
 import { useAuth } from '../../components/hooks/auth';
-import classes from './loginpage.module.css';
+import { EMAIL } from '../../components/constants/patterns';
+
 import Title from '../../components/HTML_DOM/title';
 import Input from '../../components/HTML_DOM/input';
 import Button from '../../components/HTML_DOM/button';
-import { EMAIL } from '../../components/constants/patterns';
+
+import classes from './loginpage.module.css';
 
 export default function LoginPage() {
   const {
@@ -29,12 +32,17 @@ export default function LoginPage() {
   
   return (
     <div className={classes.container}>
+
       <div className={classes.detail}>
-        <Title title="Log In" />
+
+        <div className={classes.title}>
+          <Title title="Đăng nhập" />
+        </div>
+
         <form onSubmit={handleSubmit(submit)} noValidate>
           <Input
             type="email"
-            label="Email"
+            label="Tên tài khoản email"
             {...register('email', {
               required: true,
               pattern: EMAIL,
@@ -44,20 +52,23 @@ export default function LoginPage() {
 
           <Input
             type="password"
-            label="Password"
+            label="Mật khẩu"
             {...register('password', {
               required: true,
             })}
             error={errors.password}
           />
 
-          <Button type="submit" text="Login" />
+          <Button type="submit" text="Đăng nhập" />
 
-          <div className={classes.register} >
-            New user ? &nbsp;
-              <Link to={`/register?${returnUrl ? 'returnUrl=' + returnUrl : ''}`}>
-                Register Here !
-              </Link>
+          <div className={classes.regis} >
+            <span>
+              Người dùng mới ? &nbsp;
+            </span>
+            
+            <Link to={`/register?${returnUrl ? 'returnUrl=' + returnUrl : ''}`}>
+              Đăng ký tại đây !
+            </Link>
           </div>
         </form>
       </div>

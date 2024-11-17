@@ -7,15 +7,16 @@
 .container a {
     padding: 0.3rem 1rem;
     margin: 0.5rem 0.15rem;
-    border-radius: 0.2rem;
+    border-radius: 2rem;
     text-align: center;
     text-transform: capitalize;
     color: var(--forest-green);
     background: var(--chinese-white);
     border: 1px solid var(--forest-green);
+    width: 10rem;
 }
 
 .container a:hover {
-    background-color: var(--menthol);
+    background-color: var(--Aquamarine);
     border: 1px solid var(--forest-green);
 }

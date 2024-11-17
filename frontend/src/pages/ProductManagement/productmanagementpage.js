@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import classes from './productmanagementpage.module.css';
 import { Link, useParams } from 'react-router-dom';
+
 import { deleteById, getAll, search } from '../../services/productservice';
+
 import NotFound from '../../components/notfound/notfound';
 import Title from '../../components/HTML_DOM/title';
 import Search from '../../components/Search/search';
 import Price from '../../components/price/price';
 import { toast } from 'react-toastify';
+
+import { AddIcon, StarIcon } from '../../components/icon';
+
+import classes from './productmanagementpage.module.css';
 
 export default function ProductManagementPage() {
 
@@ -14,13 +19,14 @@ export default function ProductManagementPage() {
   const {searchTerm} = useParams();
 
   useEffect(() => {
+
+    const loadProducts = async () => {
+      const products = searchTerm? await search(searchTerm) : await getAll();
+      setProducts(products);
+    }
+
     loadProducts();
   }, [searchTerm]);
-
-  const loadProducts = async () => {
-    const products = searchTerm? await search(searchTerm) : await getAll();
-    setProducts(products);
-  }
 
   const ProductsNotFound = () => {
     if (products && products.length > 0) return;
@@ -44,29 +50,49 @@ export default function ProductManagementPage() {
 
   return (
     <div className={classes.container}>
-      <div className={classes.list}>
-        <Title title="Manage Products" margin="1rem auto" />
+        <div className={classes.head}>
+          <Title title="Quản lý sản phẩm" />
 
-        <div className={classes.searchBar}>
-          <Search
-            searchRoute="/admin/products"
-            defaultRoute="/admin/products"
-          />
+          <div className={classes.search}>
+            <Search
+              searchRoute="/admin/products"
+              defaultRoute="/admin/products"
+            />
+          </div>
+
+          <Link to="/admin/addProduct" className={classes.add}>
+            Thêm sản phẩm <AddIcon />
+          </Link>
+
         </div>
+      <div className={classes.list}>
 
-        <Link to="/admin/addProduct" className={classes.add_products}>
-        Add Product +
-        </Link>
         <ProductsNotFound />
 
         {products && products.map(product => (
           <div key={product.id} className={classes.list_item}>
             <img src={product.imageUrl} alt={product.name} />
-            <Link to={'/product/' + product.id}>{product.name}</Link>
+            
+            <div>
+              <div className={classes.name}>
+                <Link to={'/product/' + product.id}>{product.name}</Link>
+              </div>
+
+              <div className={classes.rate}>
+                <span>Rated: {product.stars}</span>
+                
+                <div className={classes.star}>
+                  <StarIcon sx={{ fontSize: 15}} />
+                </div>
+              </div>
+              <div className={classes.ori}>Xuất xứ: {product.origins.join(', ')}</div>
+            </div>
+
+            <div className={classes.des}>{product.description}</div>
             <Price price={product.price} />
             <div className={classes.actions}>
-              <Link to={'/admin/editProduct/' + product.id}>Edit</Link>
-              <Link onClick={() => deleteProduct(product)}>Delete</Link>
+                <Link to={'/admin/editProduct/' + product.id}>Chỉnh sửa</Link>
+                <Link onClick={() => deleteProduct(product)}>Xóa</Link>
             </div>
           </div>
         ))}

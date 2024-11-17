@@ -13,6 +13,7 @@
     color: var(--patone-green);
     background-color: var(--tea-green);
     border: 1px solid var(--light-green);
+    outline: none;
 }
 
 .header a:hover {

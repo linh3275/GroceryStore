@@ -1,24 +1,32 @@
 
+@import '../../index.css';
+
 .container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    margin-top: 3rem;
+    margin: 0 4rem;
 }
 
-.details {
-    width: 25rem;
-}
-
-.details form {
+.detail form{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    gap: 2rem;
+}
+
+.basic {
+    width: 28rem;
 }
 
 .login {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    color: var(--forest-green);
+    margin: 1rem 0;
+}
+
+.login a {
+    color: var(--UFO-green);
+}
+
+.login a:hover {
+    color: var(--patone-green);
 }

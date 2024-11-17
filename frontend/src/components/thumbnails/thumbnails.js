@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom'; 
-import classes from './thumbnails.module.css';
-import StarRating from '../starrating/starrating';
-import Price from '../price/price';
-import { FavoriteIcon, NotFavoriteIcon, ShoppingIcon } from '../icon';
-import useFavorite from '../hooks/favorite';
+
 import { useCart } from '../hooks/cart';
+import useFavorite from '../hooks/favorite';
+
 import Tags from '../tags/tags';
+import Price from '../price/price';
+import StarRating from '../starrating/starrating';
+
+import { FavoriteIcon, NotFavoriteIcon, ShoppingIcon } from '../icon';
+
+import classes from './thumbnails.module.css';
 
 export default function ThumbNails({ products, tags }) {
   const { searchTerm } = useParams();  
@@ -61,7 +65,6 @@ export default function ThumbNails({ products, tags }) {
 
     <>
       { <div className={classes.container}>
-      {/* <div className={classes.bubble}></div> */}
 
       <Tags tags={tags} />
 
@@ -132,7 +135,6 @@ export default function ThumbNails({ products, tags }) {
                   </div>
                 </button>
               </div>
-              {/* <div className={classes.stock}>Còn lại: {product.storageQuantity} sản phẩm</div> */}
             </li>
           ))}
         </ul>

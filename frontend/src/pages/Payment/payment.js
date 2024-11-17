@@ -40,7 +40,6 @@ export default function PaymentPage() {
 
                 <div className={classes.btn_container}>
                     <div className={classes.btn}>
-                        <PaymentButtons order={order} />
                     </div>
                 </div>
             </div>

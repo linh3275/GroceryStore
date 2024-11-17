@@ -2,14 +2,14 @@ import classes from './button.module.css';
 
 export default function Button({
     type, text, onClick, color,
-    backgroundColor, fontSize,
+    backgroundColor,
     width, height,
 }) {
   return (
     <div className={classes.container}>
       <button
         style={{
-          color, backgroundColor, fontSize,
+          color, backgroundColor,
           width, height
         }}
         type={type}
@@ -24,9 +24,8 @@ export default function Button({
 Button.defaultProps = {
   type: 'button',
   text: 'Submit',
-  backgroundColor: '#e72929',
+  backgroundColor: 'var(--paolo-veronese-green)',
   color: 'white',
-  fontSize: '1.3rem',
   width: '12rem',
-  height: '3.5rem'
+  height: '2rem'
 }

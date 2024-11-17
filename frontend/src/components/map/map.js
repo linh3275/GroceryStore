@@ -1,17 +1,22 @@
 
 import { MapContainer, Marker, Popup, TileLayer, useMapEvents } from 'react-leaflet';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+
 import 'leaflet/dist/leaflet.css';
-import classes from './map.module.css';
 import { toast } from 'react-toastify';
 
+import classes from './map.module.css';
+
 export default function Map({ readonly, location, onChange }) {
+
+    const initialLocation = useRef(location || [0, 0]);
+
     return (
         <div className={classes.container}>
             <MapContainer
                 className={classes.map}
-                center={[0, 0]}
-                zoom={1}
+                center={initialLocation.current}
+                zoom={location ? 15 : 1}
                 dragging={!readonly}
                 touchZoom={!readonly}   
                 doubleClickZoom={!readonly}
@@ -32,19 +37,14 @@ export default function Map({ readonly, location, onChange }) {
 }
 
 function FindButtonAndMarket({ readonly, location, onChange }) {
-    const [postition, setPosition] = useState(location);
-
-    useEffect(() => {
-        if (readonly) {
-            map.setView(postition, 15);
-            return;
-        }
-        if (postition) onChange(postition);
-    }, [onChange]);
+    const [position, setPosition] = useState(location);
 
     const map = useMapEvents({
         click(e) {
-            !readonly && setPosition(e.latlng);
+            if (!readonly) {
+                setPosition(e.latlng);
+                onChange(e.latlng);
+            }
         },
         locationfound(e) {
             setPosition(e.latlng);
@@ -53,7 +53,13 @@ function FindButtonAndMarket({ readonly, location, onChange }) {
         locationerror(e) {
             toast.error(e.message);
         }
-    })
+    });
+
+    useEffect(() => {
+        if (readonly) {
+            map.setView(position, 15);
+        }
+    }, [map, position, readonly]);
 
     return (
         <>
@@ -63,21 +69,21 @@ function FindButtonAndMarket({ readonly, location, onChange }) {
                     className={classes.findlocation}
                     onClick={() => map.locate()}
                 >
-                    Find My Location
+                    Tìm vị trí
                 </button>
             )}
 
-            {postition && (
+            {position && (
                 <Marker
                 eventHandlers={{
                     dragend: (e) => {
                         setPosition(e.target.getLatLng());
                     },
                 }}
-                position={postition}
+                position={position}
                 draggable={!readonly}
                 >
-                    <Popup>Shipping Location</Popup>
+                    <Popup className={classes.popup}>Vị trí nhận hàng</Popup>
                 </Marker>
             )}
         </>

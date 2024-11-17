@@ -1,34 +1,47 @@
 
 @import '../../index.css';
 
+.container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
 .input {
-    border: none;
-    border-bottom: 0 solid gray;
-    transition: border-width 0.15s ease-in-out;
-    background-color: white;
-    font-size: 1.1rem;
+    width: 100%;
+    border: 1px solid var(--patone-green);
+    border-radius: 0.4rem;
+    color: var(--patone-green);
+    background-color: var(--old-lace);
+    padding: 0.5rem;
     outline: none;
+    text-transform: capitalize;
 }
 
 .input::placeholder {
-    color: #dfdfdf;
-    font-size: 0.95rem;
-}
-
-.input:focus {
-    border-width: 3px;
+    color: var(--patone-green);
+    opacity: 0.5;
 }
 
 .error {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     position: absolute;
-    top: 0;
-    right: 1rem;
-    height: 100%;
-    width: 12rem;
-    color: red;
-    text-align: center;
-    font-size: 0.95rem;
+    right: 2%;
+    color: var(--rouge-red);
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    appearance: none;
+}
+
+.textarea {
+    width: 100%;
+    border: 1px solid var(--patone-green);
+    border-radius: 0.4rem;
+    color: var(--patone-green);
+    background-color: var(--old-lace);
+    outline: none;
+    padding: 0.5rem;
+    resize: none;
 }

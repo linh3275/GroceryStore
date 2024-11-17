@@ -1,11 +1,17 @@
 import React from 'react'
-import classes from './input.module.css';
+
 import InputContainer from './inputcontainer';
 
+import classes from './input.module.css';
+
 function Input(
-    { label, type, defaultValue, onChange, onBlur, name, error },
+    { label, type, defaultValue, onChange, onFocus, onBlur, name, error, textarea = false},
     ref
 ) {
+
+    const handleChange = (e) => {
+        if (onChange) onChange(e);
+    };
 
     const getErrorMessage = () => {
         if(!error) return;
@@ -13,9 +19,9 @@ function Input(
 
         switch (error.type) {
             case 'required':
-                return 'This Field is required !';
+                return 'Chưa điền thông tin !';
             case 'minLength':
-                return 'Field is too short !';
+                return 'Thông tin điền quá ngắn !';
             default:
                 return '*';
         }
@@ -23,16 +29,39 @@ function Input(
 
   return (
     <InputContainer label={label}>
-        <input defaultValue={defaultValue}
-            className={classes.input}
-            type={type}
-            placeholder={label}
-            ref={ref}
-            name={name}
-            onChange={onChange}
-            onBlur={onBlur}
-        />
-        {error && <div className={classes.error}>{getErrorMessage()}</div>}
+        <div className={classes.container}>
+            {textarea ? (
+                <textarea
+                    className={classes.textarea}
+                    defaultValue={defaultValue}
+                    placeholder={label}
+                    ref={ref}
+                    name={name}
+                    onChange={handleChange}
+                    onBlur={onBlur}
+                    rows="15"
+                    spellCheck={false}
+                />
+            ): (
+                <input
+                    className={classes.input}
+                    defaultValue={defaultValue}
+                    type={type}
+                    placeholder={label}
+                    ref={ref}
+                    name={name}
+                    onChange={handleChange}
+                    onFocus={onFocus}
+                    onBlur={onBlur}
+                    spellCheck={false}
+                />
+            )}
+            { error && 
+                <div className={classes.error} >
+                    {getErrorMessage()}
+                </div>
+            }
+        </div>
     </InputContainer>
   )
 }

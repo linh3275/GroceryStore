@@ -1,52 +1,119 @@
 
+@import '../../index.css';
+
 .container {
     display: flex;
-    justify-content: center;
-    margin-top: 1rem;
-    margin-bottom: 10rem;
+    gap: 2rem;
+    margin: 0 2rem;
+}
+
+.head {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.search input {
+    width: 100%;
+}
+
+.add {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    color: var(--patone-green);
+    margin: 0 0.5rem;
+    padding-left: 0.5rem;
+    background-color: var(--linen);
+    border: 1px solid var(--patone-green);
+    border-radius: 1rem;
+}
+
+.add:hover {
+    background-color: var(--chinese-white);
 }
 
 .list {
-    margin: 1rem;
-    max-width: 70rem;
-}
-
-a.add_product {
-    display: inline-block;
-    background: darkred;
-    color: white;
-    padding: 0.7rem;
-    margin: 0.8rem 0;
-    border-radius: 1.5rem;
-}
-
-a.add_product:hover {
-    opacity: 0.9;
+    margin: 1.5rem 0;
+    background-color: var(--bubbles);
 }
 
 .list_item {
-    display: grid;
-    grid-template-columns: 
-        minmax(5rem, 7rem)
-        minmax(10rem, 20rem)
-        minmax(5rem, 10rem)
-        minmax(5rem, 10rem)
-    ;
-    font-size: 1.2rem;
-    height: 5rem;
+    display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 0.2rem 0;
+    padding: 0.2rem 0.4rem;
+    color: var(--patone-green);
+    border: 1px solid var(--patone-green);
+    border-radius: 0.5rem;
 }
 
 .list_item img {
     width: 4rem;
     height: 4rem;
     border-radius: 50%;
+    border: 1px solid var(--patone-green);
     object-fit: cover;
 }
 
-.actions > a {
-    margin-right: 1rem;
-    color: darkblue;
-    cursor: pointer;
+.name {
+    width: 8rem;
+    overflow: hidden;
+}
+
+.rate {
+    display: flex;
+    align-items: center;
+}
+
+.star {
+    animation: beat 1.5s infinite ease;
+}
+
+.ori {
+    width: 9rem;
+    height: 2.2rem;
+    overflow: hidden;
+    text-transform: capitalize;
+}
+
+@keyframes beat {
+    0% {
+        color: var(--UFO-green);
+    }
+    50% {
+        color: var(--patone-green);
+    }
+    100% {
+        color: var(--UFO-green);
+    }
+}
+
+.list_item a {
+    color: var(--patone-green);
+}
+
+.list_item a:hover {
+    color: var(--UFO-green);
+}
+
+.des {
+    width: 15rem;
+    height: 4.8rem;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    padding: 0.2rem 0;
+}
+
+.actions {
+    display: flex;
+    gap: 1rem;
+    padding: 0.5rem;
+}
+
+.actions a {
+    color: var(--rouge-red);
 }

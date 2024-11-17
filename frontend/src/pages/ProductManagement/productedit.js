@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom';
 import { getById, update, add } from '../../services/productservice';
-import classes from './productedit.module.css';
+
 import Title from '../../components/HTML_DOM/title';
-import InputContainer from '../../components/HTML_DOM/inputcontainer';
-import Input from '../../components/HTML_DOM/input';
 import Button from '../../components/HTML_DOM/button';
+import Input from '../../components/HTML_DOM/input';
+import InputContainer from '../../components/HTML_DOM/inputcontainer';
+
 import { uploadImage } from '../../services/uploadservice';
 import { toast } from 'react-toastify';
+
+import classes from './productedit.module.css';
 
 export default function ProductEdit() {
 
@@ -33,21 +36,21 @@ export default function ProductEdit() {
       reset(product);
       setImageUrl(product.imageUrl);
     });
-  }, [productId]);
+  }, [isEditMode, productId, reset]);
 
   const submit = async productData => {
     const product = {...productData, imageUrl};
 
     if (isEditMode) {
       await update(product);
-      toast.success(`Product "${product.name}" updated successfully !`);
-      return;
+      toast.success(`Sản phẩm "${product.name}" đã được cập nhật thành công !`);
+    } else {
+      await add(product);
+      toast.success(`Sản phẩm "${product.name}" đã được thêm thành công !`);
     }
 
-    const newProduct = await add(product);
-    toast.success(`Product "${product.name}" added successfully !`);
 
-    navigate('/admin/editProduct/' + newProduct.id, {replace: true});
+    navigate('/admin/products');
   };
 
   const upload = async event => {
@@ -58,44 +61,82 @@ export default function ProductEdit() {
 
   return (
     <div className={classes.container}>
-      <div className={classes.content}>
-        <Title title={isEditMode ? 'Edit Product' : 'Add Product'} />
-        <form onSubmit={handleSubmit(submit)} noValidate>
-          <InputContainer label="Select Image">
-            <input type='file' onChange={upload} accept='image/jpeg, image/png' />
-          </InputContainer>
-
-          {imageUrl && (
-            <a href={imageUrl} className={classes.image_link}
-              target='blank'
-            >
-              <img src={imageUrl} alt='Uploaded' />
-            </a>
-          )}
-
-          <Input type="text" label="Name"
-            {...register('name', {required: true, minLength: 5})}
-            error={errors.name} 
-          />
-
-          <Input type="number" label="Price"
-            {...register('price', {required: true, })}
-            error={errors.price} 
-          />
-
-          <Input type="text" label="Tags"
-            {...register('tags')}
-            error={errors.tags} 
-          />
-
-          <Input type="text" label="Origins"
-            {...register('origins', {required: true,})}
-            error={errors.origins} 
-          />
-
-          <Button type="submit" text={isEditMode ? 'Update' : 'Create'} />
-        </form>
+      
+      <div className={classes.head}>
+        <Title title={isEditMode ? 'Chỉnh sửa sản phẩm' : 'Thêm sản phẩm'} margin="1rem 0 0"/>
+        
+        <div>
+          <Button type="button" text="Trở về" onClick={() => navigate('/admin/products')} />
+        </div>
       </div>
+        
+      <form onSubmit={handleSubmit(submit)} noValidate>
+        <div className={classes.content}>
+
+          <div className={classes.img}>
+
+            <InputContainer label="Chọn hình ảnh">
+              <input type='file' onChange={upload} accept='image/jpeg, image/png' />
+            </InputContainer>
+
+            {imageUrl && (
+              <a href={imageUrl} className={classes.image_link}
+                target='blank'
+              >
+                <img src={imageUrl} alt='Uploading' />
+              </a>
+            )}
+
+            <div className={classes.star}>
+              <Input type="number" label="Star" defaultValue={0}
+                {...register('stars')}
+                onFocus={(e) => e.target.value === '0' && (e.target.value = '')}
+                onBlur={(e) => e.target.value === '' && (e.target.value = '0')}
+                error={errors.stars}
+              />
+            </div>
+
+          </div>
+
+          <div className={classes.basic}>
+
+            <Input type="text" label="Tên sản phẩm"
+              {...register('name', {required: true, minLength: 5})}
+              error={errors.name}
+            />
+
+            <Input type="number" label="Giá" defaultValue={0}
+              {...register('price', {required: true, })}
+              onFocus={(e) => e.target.value === '0' && (e.target.value = '')}
+              onBlur={(e) => e.target.value === '' && (e.target.value = '0')}
+              error={errors.price}
+            />
+
+            <Input type="text" label="Loại sản phẩm"
+              {...register('tags')}
+              error={errors.tags}
+            />
+
+            <Input type="text" label="Xuất xứ"
+              {...register('origins', {required: true,})}
+              error={errors.origins}
+            />
+
+          </div>
+
+          <div className={classes.des}>
+            <Input type="text" label="Thông tin sản phẩm"
+              {...register('description')}
+              error={errors.description}
+              textarea={true}
+            />
+            
+            <Button type="submit" text={isEditMode ? 'Cập nhật' : 'Tạo'} />
+
+          </div>
+        
+        </div>
+      </form>
     </div>
   )
 }

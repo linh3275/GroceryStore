@@ -1,27 +1,55 @@
+
+@import '../../index.css';
+
 .table {
-    width: 100%;
-    border: 1px solid #eeeeee;
-    margin-top: 1rem;
-    border-radius: 5px;
-    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    border: 1px solid var(--patone-green);
+    background-color: var(--bubbles);
+    padding: 0 1rem;
+    margin: 1rem 0;
 }
 
 .table td {
-    height: 3rem;
-}
-
-.table td img {
-    width: 3rem;
-    height: 3rem;
-    object-fit: cover;
-    border-radius: 50%;
+    height: 2rem;
 }
 
 .table h3 {
-    margin: 0.5rem 0 0 0.3rem;
-    color: gray;
+    border-bottom: 1px solid var(--patone-green);
+    color: var(--patone-green);
+    margin: 0.5rem 0.5rem 0;
+    padding: 0 0 0.2rem;
+}
+
+.table td img {
+    border: 1px solid var(--patone-green);
+    width: 5rem;
+    height: 5rem;
+    object-fit: cover;
+    border-radius: 50%;
+    padding: 0.2rem;
 }
 
 .table a:hover {
     opacity: 0.9;
+}
+
+.detail {
+    color: var(--patone-green);
+    cursor: default;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 0.5rem;
+}
+
+.name {
+    width: 15rem;
+}
+
+.table tfoot {
+    color: var(--patone-green);
+}
+
+.price {
+    padding: 0 1rem;
 }

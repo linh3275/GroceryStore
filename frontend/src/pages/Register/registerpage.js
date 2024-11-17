@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
-import Input from '../../components/HTML_DOM/input';
-import Title from '../../components/HTML_DOM/title';
-import Button from '../../components/HTML_DOM/button';
-import classes from './registerpage.module.css';
+
 import { useAuth } from '../../components/hooks/auth';
 import { EMAIL } from '../../components/constants/patterns';
+
+import Title from '../../components/HTML_DOM/title';
+import Input from '../../components/HTML_DOM/input';
+import Button from '../../components/HTML_DOM/button';
+
+import classes from './registerpage.module.css';
 
 
 export default function RegisterPage() {
@@ -21,7 +24,7 @@ export default function RegisterPage() {
     useEffect(() => {
         if (!user) return;
         returnUrl ? navigate(returnUrl) : navigate('/');
-    }, [user])
+    }, [navigate, returnUrl, user])
 
     const {
         handleSubmit,
@@ -36,54 +39,37 @@ export default function RegisterPage() {
 
   return (
     <div className={classes.container}>
-        <div className={classes.details}>
-            <Title title="Register" />
-            <form onSubmit={handleSubmit(submit)} noValidate>
+
+        <div className={classes.detail}>
+            <Title title="Đăng ký" />
+
+            <form onSubmit={handleSubmit(submit)} noValidate >
+
+                <div className={classes.basic}>
+
+                    <Input
+                        type="text"
+                        label="Tên người dùng"
+                        {...register('name', {
+                            required: true,
+                            minLength: 5,
+                        })}
+                        error={errors.name}
+                    />
+
+                    <Input
+                        type="email"
+                        label="Tên tài khoản email"
+                        {...register('email', {
+                            required: true,
+                            pattern: EMAIL,
+                        })}
+                        error={errors.email}
+                    />
 
                 <Input
                     type="text"
-                    label="name"
-                    {...register('name', {
-                        required: true,
-                        minLength: 5,
-                    })}
-                    error={errors.name}
-                />
-
-                <Input
-                    type="email"
-                    label="Email"
-                    {...register('email', {
-                        required: true,
-                        pattern: EMAIL,
-                    })}
-                    error={errors.email}
-                />
-
-                <Input
-                    type="password"
-                    label="Password"
-                    {...register('password', {
-                    required: true,
-                    minLength: 5,
-                    })}
-                    error={errors.password}
-                />
-
-                <Input
-                    type="password"
-                    label="Confirm Password"
-                    {...register('confirmPassword', {
-                    required: true,
-                    validate: value => value !== getValues('password')
-                    ? 'Password is not match !' : true,
-                    })}
-                    error={errors.confirmPassword}
-                />
-
-                <Input
-                    type="text"
-                    label="Address"
+                    label="Địa chỉ"
                     {...register('address', {
                     required: true,
                     minLength: 10,
@@ -91,13 +77,45 @@ export default function RegisterPage() {
                     error={errors.address}
                 />
 
-                <Button type="submit" text="Register" />
+                </div>
 
-                <div className={classes.login}>
-                    Already a user? &nbsp;
-                    <Link to={`/login${returnUrl ? '?returnUrl=' + returnUrl : ''}`}>
-                        Login Here !
-                    </Link>
+                <div>
+
+                    <div className={classes.basic}>
+                        <Input
+                            type="password"
+                            label="Mật khẩu"
+                            {...register('password', {
+                            required: true,
+                            minLength: 5,
+                            })}
+                            error={errors.password}
+                        />
+
+                        <Input
+                            type="password"
+                            label="Nhập lại mật khẩu"
+                            {...register('confirmPassword', {
+                            required: true,
+                            validate: value => value !== getValues('password')
+                            ? 'Password is not match !' : true,
+                            })}
+                            error={errors.confirmPassword}
+                        />
+                    </div>
+
+                    <Button type="submit" text="Đăng ký" />
+
+                    <div className={classes.login}>
+                        <span>
+                            Đã có tài khoản ? &nbsp;
+                        </span>
+
+                        <Link to={`/login${returnUrl ? '?returnUrl=' + returnUrl : ''}`}>
+                            Đăng nhập tại đây !
+                        </Link>
+                    </div>
+
                 </div>
 
             </form>

@@ -1,12 +1,13 @@
 
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    margin-top: 3rem;
+    margin: 0 4rem;
+}
+
+.title {
+    text-transform: capitalize;
 }
 
 .details {
-    width: 28rem;
+    display: flex;
+    gap: 2rem;
 }

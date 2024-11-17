@@ -12,3 +12,5 @@ export { default as PeopleIcon } from '@mui/icons-material/PeopleOutline';
 export { default as CategoryIcon } from '@mui/icons-material/Category';
 export { default as ShippingIcon } from '@mui/icons-material/LocalShipping';
 export { default as DeleteIcon } from '@mui/icons-material/Delete';
+export { default as AddIcon } from '@mui/icons-material/AddCircle';
+export { default as MinusIcon } from '@mui/icons-material/RemoveCircle';

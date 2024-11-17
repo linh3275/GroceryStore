@@ -1,17 +1,17 @@
 
+@import '../../index.css';
+
 .container {
     display: flex;
     justify-content: center;
-    width: 100%;
 }
 
 .container button {
-    border: none;
-    outline: none;
-    font-weight: 100;
+    border: 1px solid var(--lavender);
     border-radius: 0.8rem;
-    width: 100%;
-    margin: 1rem auto;
+    font-size: 1.2rem;
+    margin: 1rem 0 0;
+    outline: none;
     opacity: 0.8;
 }
 

@@ -1,34 +1,9 @@
 
+@import '../../index.css';
+
 .container {
-    margin-top: 1rem;
+    margin: 0 4rem 4rem;
     display: flex;
-    margin: 0 0 6rem 2rem;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
 }
-
-.content {
-    width: 35rem;
-    margin: 0 3rem 0 0;
-}
-
-.content,
-.inputs {
-    display: flex;
-    flex-direction: column;
-}
-
-.inputs {
-    width: 100%;
-}
-
-.btn_container {
-    display: flex;
-    flex-basis: 100%;
-    justify-content: center;
-}
-
-.btns {
-    margin: 2rem;
-    width: 35rem;
-} 

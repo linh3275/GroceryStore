@@ -8,7 +8,7 @@
     --honeydew1: #e6f9e9;
     --honeydew2: #e6f9f2;
     --bubbles: #e6f7f9;
-    --lavender: #e6edf9; /* web */
+    --lavender: #e6edf9;
 
 
     --Aquamarine: #88ffc3;
@@ -18,11 +18,15 @@
     --pale-green: #98FB98;
     --patone-green: #1b5e20; /* Cal Poly Pomona Green */
     --tea-green: #c8e6c9;
+    
+    --paolo-veronese-green: #009e84;
     --UFO-green: #2ecc71;
 
     --menthol: #c4ff88;
 
     --chinese-white: #d4efdf;
+
+    --rouge-red: #e24666;
     
 }
 
@@ -43,4 +47,17 @@ body {
 
 a {
     text-decoration: none;
+}
+
+/* Animation */
+@keyframes beat {
+    0% {
+        color: var(--UFO-green);
+    }
+    50% {
+        color: var(--patone-green);
+    }
+    100% {
+        color: var(--UFO-green);
+    }
 }

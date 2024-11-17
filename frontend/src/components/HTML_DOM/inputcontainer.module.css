@@ -1,21 +1,22 @@
+
+@import '../../index.css';
+
 .container {
-    position: relative;
-    margin-bottom: 0.5rem;
-    border-radius: 0.7rem;
-    padding-top: 0.3rem;
-    border: 1px solid #e0e0e0;
+    background-color: var(--bubbles);
+    border: 1px solid var(--patone-green);
+    border-radius: 1rem;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
 }
 
 .label {
-    display: inline-block;
-    margin-left: 0.5rem;
-    color: #5f5f5f;
-    font-size: 1rem;
+    color: var(--patone-green);
+    text-transform: capitalize;
+    padding: 1rem;
 }
 
 .content {
-    padding: 0 0.5rem;
-    height: 2.7rem;
     display: flex;
     align-items: center;
+    padding: 0.5rem;
 }

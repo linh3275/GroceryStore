@@ -5,15 +5,15 @@
   align-items: center;
   justify-content: space-between;
   border: 1px solid var(--light-green);
-  border-radius: 5px;
+  border-radius: 1rem;
   background-color: var(--chinese-white);
+  padding: 0 0.1rem;
 }
 
 .searchInput {
   border: none;
   outline: none;
   padding: 8px;
-  border-radius: 5px;
   color: var(--forest-green);
   background-color: transparent;
 }
@@ -35,7 +35,6 @@
 }
 
 .searchIcon:hover {
-  color: var(--forest-green);
-  background-color: var(--menthol);
+  background-color: var(--Aquamarine);
   border: 1px solid var(--forest-green);
 }

@@ -1,6 +1,8 @@
 import React from 'react'
-import classes from './starrating.module.css'
+
 import { StarIcon, StarBorderIcon, StarHalfIcon } from '../icon';
+
+import classes from './starrating.module.css'
 
 export default function StarRating({stars}) {
 

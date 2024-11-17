@@ -1,41 +1,52 @@
 import { Link } from "react-router-dom";
+
 import Price from "../price/price";
+
 import classes from './order.module.css';
 
 export default function OrderList ({order}) {
     return (
         <table className={classes.table}>
-            <tbody>
+            
+            <thead>
                 <tr>
                     <td colSpan="5">
-                        <h3>Order Items:</h3>
+                        <h3>Danh sách đặt hàng:</h3>
                     </td>
                 </tr>
+            </thead>
 
+            <tbody>
                 {order.items.map(item => (
                     <tr key={item.product.id}>
                         <td>
                             <Link to={`/product/${item.product.id}`}>
-                                <img src={item.product.imageUrl} />
+                                <img src={item.product.imageUrl} alt='' />
                             </Link>
                         </td>
-                        <td>{item.product.name}</td>
-                        <td>
-                            <Price price={item.product.price} />
+                        <td className={classes.detail}>
+                            <div className={classes.name}>Tên sản phẩm: {item.product.name}</div>
+                            <div>Giá:
+                                <Price price={item.product.price} />
+                            </div>
+                            <div>Số lượng: {item.quantity}</div>
+
                         </td>
-                        <td>{item.quantity}</td>
                     </tr>
                 ))}
+            </tbody>
 
+            <tfoot>
                 <tr>
-                    <td>
-                        <strong>Total: </strong>
+                    <td className={classes.price}>
+                        <h4>Tổng tiền: </h4>
                     </td>
                     <td>
                         <Price price={order.totalPrice} />
                     </td>
                 </tr>
-            </tbody>
+            </tfoot>
+
         </table>
     )
 }
