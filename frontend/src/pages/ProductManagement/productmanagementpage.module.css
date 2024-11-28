@@ -7,6 +7,12 @@
     margin: 0 2rem;
 }
 
+.main {
+    display: flex;
+    flex-direction: column;
+    gap: 20%;
+}
+
 .head {
     display: flex;
     flex-direction: column;
@@ -31,7 +37,7 @@
 }
 
 .add:hover {
-    background-color: var(--chinese-white);
+    background-color: var(--bubbles);
 }
 
 .list {
@@ -75,8 +81,9 @@
 
 .ori {
     width: 9rem;
-    height: 2.2rem;
-    overflow: hidden;
+    height: 1.3rem;
+    overflow-y: auto;
+    scrollbar-width: thin;
     text-transform: capitalize;
 }
 

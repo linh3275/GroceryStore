@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
+
 import { getById, update, add } from '../../services/productservice';
 
 import Title from '../../components/HTML_DOM/title';
@@ -8,8 +9,8 @@ import Button from '../../components/HTML_DOM/button';
 import Input from '../../components/HTML_DOM/input';
 import InputContainer from '../../components/HTML_DOM/inputcontainer';
 
-import { uploadImage } from '../../services/uploadservice';
 import { toast } from 'react-toastify';
+import { uploadImage } from '../../services/uploadservice';
 
 import classes from './productedit.module.css';
 
@@ -39,7 +40,7 @@ export default function ProductEdit() {
   }, [isEditMode, productId, reset]);
 
   const submit = async productData => {
-    const product = {...productData, imageUrl};
+    const product = {...productData, id: productId, imageUrl};
 
     if (isEditMode) {
       await update(product);
@@ -48,7 +49,6 @@ export default function ProductEdit() {
       await add(product);
       toast.success(`Sản phẩm "${product.name}" đã được thêm thành công !`);
     }
-
 
     navigate('/admin/products');
   };
@@ -89,9 +89,7 @@ export default function ProductEdit() {
 
             <div className={classes.star}>
               <Input type="number" label="Star" defaultValue={0}
-                {...register('stars')}
-                onFocus={(e) => e.target.value === '0' && (e.target.value = '')}
-                onBlur={(e) => e.target.value === '' && (e.target.value = '0')}
+                {...register('stars', { max: 5, })}
                 error={errors.stars}
               />
             </div>
@@ -107,8 +105,6 @@ export default function ProductEdit() {
 
             <Input type="number" label="Giá" defaultValue={0}
               {...register('price', {required: true, })}
-              onFocus={(e) => e.target.value === '0' && (e.target.value = '')}
-              onBlur={(e) => e.target.value === '' && (e.target.value = '0')}
               error={errors.price}
             />
 
@@ -127,8 +123,8 @@ export default function ProductEdit() {
           <div className={classes.des}>
             <Input type="text" label="Thông tin sản phẩm"
               {...register('description')}
-              error={errors.description}
               textarea={true}
+              error={errors.description}
             />
             
             <Button type="submit" text={isEditMode ? 'Cập nhật' : 'Tạo'} />

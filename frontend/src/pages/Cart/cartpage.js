@@ -1,10 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../../components/hooks/cart';
 
 import Title from '../../components/HTML_DOM/title';
 import Price from '../../components/price/price';
 import NotFound from '../../components/notfound/notfound';
+import Button from '../../components/HTML_DOM/button';
 
 import { FavoriteIcon, AddIcon, MinusIcon, DeleteIcon } from '../../components/icon';
 
@@ -12,12 +13,17 @@ import classes from './cartpage.module.css';
 
 export default function CartPage() {
   const { cart, removeFromCart, changeQuantity } = useCart();
+  const navigate = useNavigate();
 
   const handleQuantityChange = (item, newQuantity) => {
     if (newQuantity >= 1) {
       changeQuantity(item, newQuantity);
     }
   };
+
+  const submit = () => {
+    navigate('/checkout');
+  }
 
   return (
     <>
@@ -83,7 +89,7 @@ export default function CartPage() {
             <div className={classes.price}>
               <Price price={cart.totalPrice} />
             </div>
-            <Link to="/checkout">Thanh Toán</Link>
+            <Button type="submit" text="Đặt hàng" onClick={submit} />
           </div>
         </div>
       )}

@@ -1,17 +1,19 @@
 import React from 'react';
 import { useAuth } from '../hooks/auth';
-import NotFound from '../notfound/notfound';
+
 import AuthRoute from './authroute';
 
+import NotFound from '../notfound/notfound';
+ 
 function AdminRoute({children}) {
     
     const {user} = useAuth();
 
   return user.isAdmin ? children :
     <NotFound
-        linkRoute="/dashbroard"
-        linkText="Go to dashboard !"
-        message="You don't have access to this page !"
+        linkRoute="/"
+        linkText="Về trang Chủ !"
+        message="Bạn không có quyền truy cập vào trang này !"
     />
 }
 

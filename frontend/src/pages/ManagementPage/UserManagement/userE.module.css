@@ -1,13 +1,38 @@
 
 .container {
-    margin-top: 1rem;
-    margin-bottom: 10rem;
     display: flex;
-    justify-content: center;
+    margin: 0 4rem;
 }
 
 .content {
-    margin: 1rem;
-    max-width: 25rem;
     width: 100%;
+}
+
+.head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.main {
+    display: flex;
+    justify-content: space-between;
+}
+
+.basic {
+    width: 22rem;
+}
+
+.address {
+    width: 60%;
+}
+
+.checkbox {
+    width: 50%;
+}
+
+.checkbox input[type="checkbox"] {
+    width: 4rem;
+    height: 2rem;
+    margin-left: 3rem;
 }

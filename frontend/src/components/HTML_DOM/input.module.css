@@ -16,7 +16,6 @@
     background-color: var(--old-lace);
     padding: 0.5rem;
     outline: none;
-    text-transform: capitalize;
 }
 
 .input::placeholder {
@@ -44,4 +43,5 @@ input[type="number"]::-webkit-inner-spin-button {
     outline: none;
     padding: 0.5rem;
     resize: none;
+    max-height: 10rem;
 }

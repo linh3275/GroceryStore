@@ -1,18 +1,20 @@
-
 import React from "react";
-import { useAuth } from "../../components/hooks/auth";
-import classes from './Dashboard.module.css';
 import { Link } from "react-router-dom";
+
+import { useAuth } from "../../components/hooks/auth";
 import { ProfileIcon, PeopleIcon, CategoryIcon, ShippingIcon } from '../../components/icon';
 
+import classes from './Dashboard.module.css';
+
 export default function Dashboard() {
+    
     const {user} = useAuth();
 
     return (
         <div className={classes.container}>
             <div className={classes.navbar}>
-                {allItems.filter(item => user.isAdmin || !item.forAdmin)
-                .map(item => 
+                { allItems.filter(item => user.isAdmin || !item.forAdmin)
+                    .map(item => 
                         <Link key={item.title} to={item.url} >
                             {item.icon}
                             <h2>{item.title}</h2>
@@ -28,21 +30,23 @@ const allItems = [
     {
         title: 'Profile',
         url: '/profile',
-        icon: <ProfileIcon />
+        icon: <ProfileIcon />,
     },
     {
         title: 'Accounts',
         url: '/admin/users',
-        icon: <PeopleIcon />
+        icon: <PeopleIcon />,
+        forAdmin: true,
     },
     {
         title: 'Products',
         url: '/admin/products',
-        icon: <CategoryIcon />
+        icon: <CategoryIcon />,
+        forAdmin: true,
     },
     {
         title: 'Orders',
         url: '/orders',
-        icon: <ShippingIcon />
+        icon: <ShippingIcon />,
     },
 ]

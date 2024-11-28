@@ -1,8 +1,10 @@
 import React, { useEffect, useReducer } from 'react'
-import { getAll, search, getAllTags, getAllByTag } from '../../services/productservice';
-import ThumbNails from '../../components/thumbnails/thumbnails';
 import { useParams } from 'react-router-dom';
+
+import { getAll, search, getAllTags, getAllByTag } from '../../services/productservice';
+
 import NotFound from '../../components/notfound/notfound';
+import ThumbNails from '../../components/thumbnails/thumbnails';
 
 const initialState = {products: [], tags: []};
 

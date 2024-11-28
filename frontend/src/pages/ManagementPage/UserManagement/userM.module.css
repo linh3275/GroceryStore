@@ -1,34 +1,66 @@
 
+@import '../../../index.css';
+
 .container {
     display: flex;
     justify-content: center;
-    margin-top: 2rem;
-    font-size: 1.2rem;
+    margin: 0 4rem;
 }
 
 .list {
     width: 100%;
-    max-width: 50rem;
+}
+
+.head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .list_item {
     display: grid;
-    grid-template-columns: 20% 35% 20% 10% 15%;
-    gap: 1%;
+    grid-template-columns: 15% 20% 33% auto 15%;
     align-items: center;
-    border-bottom: 1px solid whitesmoke;
+    gap: 0.5rem;
+    border: 1px solid var(--forest-green);
+    color: var(--forest-green);
     min-height: 3rem;
+    padding: 0 1rem;
+    margin: 1rem 0;
 }
 
 .list_item > * {
-    word-wrap: break-word;
+    border-right: 1px solid var(--forest-green);
 }
 
-h3 {
-    margin-left: 0;
+.list_item > *:last-child {
+    border: none;
+}
+
+.list_item .address {
+    text-transform: capitalize;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    height: 1.4rem;
+    padding: 0.25rem 0 0;
+}
+
+.auth {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem
 }
 
 .actions {
     display: flex;
     gap: 0.7rem;
+}
+
+.actions a {
+    color: var(--rouge-red);
+}
+
+.actions a:hover {
+    color: var(--UFO-green);
 }

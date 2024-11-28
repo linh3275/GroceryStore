@@ -11,7 +11,7 @@ function App() {
 
   useEffect(() => {
     setLoadingInterceptors({ showLoading, hideLoading });
-  }, []);
+  }, [hideLoading, showLoading]);
 
   return (
     <>

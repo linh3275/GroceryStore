@@ -29,7 +29,7 @@ export default function Search({ searchRoute, defaultRoute }) {
 
     return (
         <div className={classes.searchBox}>
-          <input className={classes.searchInput} placeholder='Bình bông'
+          <input className={classes.searchInput} placeholder=''
             onChange={e => setTerm(e.target.value)}
             onKeyUp={e => e.key === 'Enter' && search()}
             value={term} />

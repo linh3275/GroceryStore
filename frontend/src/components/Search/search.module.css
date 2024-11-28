@@ -13,9 +13,10 @@
 .searchInput {
   border: none;
   outline: none;
-  padding: 8px;
+  padding: 0.5rem;
   color: var(--forest-green);
   background-color: transparent;
+  width: 100%;
 }
 
 .searchInput::placeholder {

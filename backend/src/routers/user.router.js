@@ -124,11 +124,17 @@ router.get('/getById/:userId', admin, handler (async (req, res) => {
 );
 
 router.put('/update', admin, handler (async (req, res) => {
-    const { id, name, email, address, isAdmin} = req.body;
+        const { id, name, email, address, isAdmin} = req.body;
 
-    const user = await UserModel.findByIdAndUpdate(id, {password: 0});
-    res.send();
-})
+        const user = await UserModel.findByIdAndUpdate(id, { name, email, address, isAdmin },);
+        
+        if (!user) {
+            res.status(bad_request).send('User not found!');
+            return;
+        }
+        
+        res.send();
+    })
 );
 
 const genTokenRes = user => {

@@ -1,5 +1,7 @@
-import React, { createContext, useContext, useEffect, useState } from 'react'
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
+
+import { getUser } from '../../services/userservice';
 
 const CartContext = createContext(null);
 const cart_key = 'cart';
@@ -11,12 +13,20 @@ const empty_cart = {
 
 export default function CartProvider({children}) {
 
-    const initCart = getCartFromLocalStorage();
+    const initCart = getCartFromStorage();
     const [cartItems, setCartItems] = useState(initCart.items);
     const [totalCount, setTotalCount] = useState(initCart.totalCount);
     const [totalPrice, setTotalPrice] = useState(initCart.totalPrice);
 
     useEffect(() => {
+      const user = getUser();
+      if (!user) {
+        clearCart();
+      }
+    }, []);
+
+    useEffect(() => {
+
       const totalPrice = sum(cartItems.map(item => item.price));
       const totalCount = sum(cartItems.map(item => item.quantity));
 
@@ -26,9 +36,9 @@ export default function CartProvider({children}) {
       localStorage.setItem(cart_key, JSON.stringify({items: cartItems, totalCount, totalPrice}))
     }, [cartItems]);
 
-    function getCartFromLocalStorage() {
+    function getCartFromStorage() {
       const storedCart = localStorage.getItem(cart_key);
-      return storedCart? JSON.parse(storedCart) : empty_cart;
+      return storedCart ? JSON.parse(storedCart) : empty_cart;
     }
 
     const sum = items => {

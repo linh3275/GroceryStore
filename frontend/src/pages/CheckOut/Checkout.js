@@ -80,7 +80,7 @@ export default function CheckoutPage() {
                     <div className={classes}>
                         <Button
                             type="submit"
-                            text="Go to Payment"
+                            text="Thanh toán"
                         />
                     </div>
                 </div>

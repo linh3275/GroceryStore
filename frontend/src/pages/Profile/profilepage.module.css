@@ -7,6 +7,12 @@
     text-transform: capitalize;
 }
 
+.main {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
 .details {
     display: flex;
     gap: 2rem;

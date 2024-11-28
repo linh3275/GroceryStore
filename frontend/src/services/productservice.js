@@ -28,7 +28,6 @@ export const getById = async productId => {
 
 export async function deleteById(productId) {
     await axios.delete('/api/products/' + productId);
-    
 };
 
 export async function update(product) {

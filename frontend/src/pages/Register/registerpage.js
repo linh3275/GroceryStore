@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 
 import { useAuth } from '../../components/hooks/auth';
-import { EMAIL } from '../../components/constants/patterns';
+import { EMAIL, name } from '../../components/constants/patterns';
 
 import Title from '../../components/HTML_DOM/title';
 import Input from '../../components/HTML_DOM/input';
@@ -23,8 +23,8 @@ export default function RegisterPage() {
 
     useEffect(() => {
         if (!user) return;
-        returnUrl ? navigate(returnUrl) : navigate('/');
-    }, [navigate, returnUrl, user])
+        navigate('/');
+    }, [navigate, user])
 
     const {
         handleSubmit,
@@ -52,7 +52,8 @@ export default function RegisterPage() {
                         label="Tên người dùng"
                         {...register('name', {
                             required: true,
-                            minLength: 5,
+                            minLength: 1,
+                            pattern: name,
                         })}
                         error={errors.name}
                     />
@@ -67,15 +68,15 @@ export default function RegisterPage() {
                         error={errors.email}
                     />
 
-                <Input
-                    type="text"
-                    label="Địa chỉ"
-                    {...register('address', {
-                    required: true,
-                    minLength: 10,
-                    })}
-                    error={errors.address}
-                />
+                    <Input
+                        type="text"
+                        label="Địa chỉ"
+                        {...register('address', {
+                        required: true,
+                        minLength: 10,
+                        })}
+                        error={errors.address}
+                    />
 
                 </div>
 
@@ -98,7 +99,7 @@ export default function RegisterPage() {
                             {...register('confirmPassword', {
                             required: true,
                             validate: value => value !== getValues('password')
-                            ? 'Password is not match !' : true,
+                            ? 'Mật khẩu không khớp !' : true,
                             })}
                             error={errors.confirmPassword}
                         />

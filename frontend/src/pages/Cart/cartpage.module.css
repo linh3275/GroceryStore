@@ -153,21 +153,3 @@
 .checkout .price::before {
     content: 'Tổng tiền: ';
 }
-
-.checkout a {
-    border-radius: 1rem;
-    text-align: center;
-    color: var(--patone-green);
-    background-color: var(--bubbles);
-    border: 1px solid var(--patone-green);
-    padding: 0.5rem 1rem;
-}
-
-.checkout a:hover {
-    background-color: var(--chinese-white);
-    cursor: pointer;
-}
-
-.click {
-    background-color: var(--Aquamarine);
-}

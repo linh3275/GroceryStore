@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 import { deleteById, getAll, search } from '../../services/productservice';
 
@@ -7,6 +7,7 @@ import NotFound from '../../components/notfound/notfound';
 import Title from '../../components/HTML_DOM/title';
 import Search from '../../components/Search/search';
 import Price from '../../components/price/price';
+import Button from '../../components/HTML_DOM/button';
 import { toast } from 'react-toastify';
 
 import { AddIcon, StarIcon } from '../../components/icon';
@@ -17,6 +18,7 @@ export default function ProductManagementPage() {
 
   const [products, setProducts] = useState();
   const {searchTerm} = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
 
@@ -50,6 +52,8 @@ export default function ProductManagementPage() {
 
   return (
     <div className={classes.container}>
+      <div className={classes.main}>
+
         <div className={classes.head}>
           <Title title="Quản lý sản phẩm" />
 
@@ -65,6 +69,12 @@ export default function ProductManagementPage() {
           </Link>
 
         </div>
+
+        <Button type="button" text="Trở về" backgroundColor="var(--patone-green)"
+          onClick={() => navigate('/dashboard')} />
+
+      </div>
+
       <div className={classes.list}>
 
         <ProductsNotFound />

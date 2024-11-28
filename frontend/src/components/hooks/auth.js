@@ -1,5 +1,7 @@
 import { useState, createContext, useContext } from "react";
+
 import * as userService from "../../services/userservice";
+
 import { toast } from "react-toastify";
 
 const authContext = createContext(null);
@@ -11,7 +13,8 @@ export const AuthProvider = ({ children }) => {
         try {
             const user = await userService.login(email, password);
             setUser(user);
-            toast.success('Login Successful !');
+            
+            toast.success('Đăng nhập thành công !');
         } catch (err) {
             toast.error(err.response.data);
         }
@@ -20,14 +23,14 @@ export const AuthProvider = ({ children }) => {
     const logout = () => {
         userService.logout();
         setUser(null);
-        toast.success('Logout Successful !');
+        toast.success('Đăng xuất thành công !');
     }
 
     const register = async data => {
         try {
             const user = await userService.register(data);
             setUser(user);
-            toast.success('Welcome New Buyer !');
+            toast.success('Chào mừng khách hàng mới !');
         } catch (err) {
             toast.error(err.response.data);
         }
@@ -35,14 +38,14 @@ export const AuthProvider = ({ children }) => {
 
     const updateProfile = async user => {
         const updatedUser = await userService.updateProfile(user);
-        toast.success('Profile Update was successful !');
+        toast.success('Cập nhật thông tin cá nhân thành công !');
         if (updatedUser) setUser(updatedUser);
     }
 
     const changePassword = async password => {
         await userService.changePassword(password);
         logout();
-        toast.success('Password Changed Successfully, please log in again !');
+        toast.success('Đã đổi mật khẩu thành công. Vui lòng đăng nhập lại !');
     }
 
     return (
