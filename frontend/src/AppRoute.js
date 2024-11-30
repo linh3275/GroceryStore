@@ -16,6 +16,7 @@ import ProductEdit from './pages/ProductManagement/productedit'
 import UserManagement from './pages/ManagementPage/UserManagement/userManagement'
 import UserEdit from './pages/ManagementPage/UserManagement/userEdit'
 import OrderPage from './pages/Order/orderPage'
+import OrderTrack from './pages/OrderTrack/orderTrack'
 
 export default function AppRoute() {
   return <Routes>
@@ -37,6 +38,13 @@ export default function AppRoute() {
        element={
         <AuthRoute>
           <PaymentPage />
+        </AuthRoute>
+        }
+    />
+    <Route path='/track/:orderId'
+       element={
+        <AuthRoute>
+          <OrderTrack />
         </AuthRoute>
         }
     />

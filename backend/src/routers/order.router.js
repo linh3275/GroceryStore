@@ -27,22 +27,39 @@ router.post(
 );
 
 router.get(
-    '/newOrderForCurrentUser',
-    handler( async (req, res) => {
-        const order = await getNewOrderForCurrentUser(req);
-        if (order) res.send(order);
-        else res.status(bad_request).send();
+    "/newOrder",
+    handler(async (req, res) => {
+        const order = await OrderModel.findOne({
+            user: req.user.id,
+            status: OrderStatus.new,
+        });
+
+        if (order) {
+            res.send(order);
+        } else {
+            const newOrder = new OrderModel({
+                user: req.user.id,
+                items: [],
+                status: OrderStatus.new,
+                address: req.user.address || "",
+            });
+            await newOrder.save();
+
+            res.send(newOrder);
+        }
     })
 );
+
+const getNewOrder = async req => await OrderModel.findOne({ user: req.user.id, status: OrderStatus.new });
 
 router.put(
     '/pay',
     handler( async (req, res) => {
         const {paymentId} = req.body;
-        const order = await getNewOrderForCurrentUser(req);
+        const order = await getNewOrder(req);
         
         if (!order) {
-            res.status(bad_request).send('Order not found');
+            res.status(bad_request).send('Không tìm thấy đơn hàng');
             return;
         }
 
@@ -53,7 +70,5 @@ router.put(
         res.send(order._id);
     })
 )
-
-const getNewOrderForCurrentUser = async req => await OrderModel.findOne({ user: req.user.id, status: OrderStatus.new });
 
 export default router;

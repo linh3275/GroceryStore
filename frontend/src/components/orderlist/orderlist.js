@@ -25,7 +25,7 @@ export default function OrderList ({order}) {
                             </Link>
                         </td>
                         <td className={classes.detail}>
-                            <div className={classes.name}>Tên sản phẩm: {item.product.name}</div>
+                            <div className={classes.name}>{item.product.name}</div>
                             <div>Giá:
                                 <Price price={item.product.price} />
                             </div>

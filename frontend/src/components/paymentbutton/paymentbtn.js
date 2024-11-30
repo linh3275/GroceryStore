@@ -1,24 +1,30 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+
 import { useLoading } from "../hooks/loading";
 import { useCart } from "../hooks/cart";
-import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 
-// chỉnh sửa sau
+import { PayPalScriptProvider, usePayPalScriptReducer } from "@paypal/react-paypal-js";
+import { pay } from "../../services/orderservice";
 
 export default function PaymentButtons({ order }) {
     return (
-        // <PayProvider options={{}}>
-            <Buttons order={order} />
-        // </PayProvider>
+        <PayPalScriptProvider
+            options={{
+                clientId:'AdSuniThSBBTeYPX4e4tXPEVsd4BXPjGCuPu571tJjRphNTCo5NTITijyHuvTZjEEeGxgEwsy9zufV69'
+            }}>
+                <PayButton orders={order} />
+            </PayPalScriptProvider>
     )
 }
 
-function Buttons ({order}) {
-    const [{isPending}] = pay(false);
+function PayButton ({order}) {
+    const [{isPending}] = usePayPalScriptReducer();
     const {showLoading, hideLoading} = useLoading();
     const {clearCart} = useCart();
     const navigate = useNavigate();
+
     useEffect(() => {
         isPending ? showLoading() : hideLoading();
     });
@@ -57,9 +63,4 @@ function Buttons ({order}) {
             onError={onError}
         />
     )
-}
-
-function pay(a) {
-    console.log(a);
-    return a;
 }

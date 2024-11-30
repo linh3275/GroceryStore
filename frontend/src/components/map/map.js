@@ -43,12 +43,12 @@ function FindButtonAndMarket({ readonly, location, onChange }) {
         click(e) {
             if (!readonly) {
                 setPosition(e.latlng);
-                onChange(e.latlng);
+                onChange?.(e.latlng);
             }
         },
         locationfound(e) {
             setPosition(e.latlng);
-            map.flyTo(e.latlng, 13);
+            map.flyTo(e.latlng, 18);
         },
         locationerror(e) {
             toast.error(e.message);

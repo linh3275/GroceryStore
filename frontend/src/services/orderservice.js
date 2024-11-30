@@ -9,10 +9,14 @@ export const createOrder = async order => {
     }
 }
 
-export const getNewOrderForCurrentUser = async () => {
-    const {data} = await axios.get('/api/orders/newOrderForCurrentUser');
-    return data;
-}
+export const getNewOrder = async () => {
+    try {
+        const {data} = await axios.get('/api/orders/newOrder');
+        return data;
+    } catch (err) {
+        
+    }
+};
 
 export const pay = async paymentId => {
     try {

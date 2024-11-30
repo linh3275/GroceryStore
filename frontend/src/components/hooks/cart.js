@@ -59,7 +59,6 @@ export default function CartProvider({children}) {
       setCartItems(updatedCartItems);
     };
     
-
     const addToCart = product => {
       const cartItem = cartItems.find(item => item.product.id === product.id);
       if (cartItem) {
@@ -77,7 +76,6 @@ export default function CartProvider({children}) {
       setTotalCount(totalCount);
       setTotalPrice(totalPrice);
     }
-
 
   return (
     <CartContext.Provider value={{
